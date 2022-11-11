@@ -1,7 +1,12 @@
-# CS5610-NFT-Marketplace
-An NFT marketplace that simulates buying and selling NFT art
+[![Netlify Status](https://api.netlify.com/api/v1/badges/403a50a6-862e-410e-b291-b8698368145b/deploy-status)](https://app.netlify.com/sites/expensive-jpegs/deploys)
 
-**Disclaimer:** Not a real marketplace. Just for academic learning purposes.
+# CS5610-Final-Project
+
+https://expensive-jpegs.netlify.app/ 
+
+An NFT marketplace that simulates buying and selling NFT art. Not  a real marketplace! Just for academic learning purposes.
+
+## Collaborators
 
 Dennis Ping  
 Sarah Johnson  
@@ -10,6 +15,7 @@ Xiaohan Qin
 ## Technologies
 
   - React
+  - HTML/CSS
   - NodeJS
   - MongoDB
 
