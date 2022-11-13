@@ -10,7 +10,7 @@ import NavbarComponent from "./navbar";
 function App() {
   return (
     <BrowserRouter>
-      <div className="container py-2 border-start border-end">
+      <div className="container">
         <NavbarComponent />
         <Routes>
           <Route index element={<Navigate replace to="home" />} />

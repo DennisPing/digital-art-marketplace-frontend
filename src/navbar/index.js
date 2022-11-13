@@ -7,9 +7,9 @@ const NavbarComponent = () => {
   const active = paths[1];
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid px-0">
-        <Link to="/home" className="navbar-brand nav-link">
+        <Link to="/home" className="navbar-brand nav-link fs-4">
           Expensive JPEGs
         </Link>
         <button
@@ -25,28 +25,10 @@ const NavbarComponent = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <Link
-              to="/home"
-              className={`nav-link px-0 px-lg-2 ${active === "home" ? "active" : ""}`}
-            >
-              Home
-            </Link>
-            <Link
-              to="/shop"
-              className={`nav-link px-0 px-lg-2 ${active === "shop" ? "active" : ""}`}
-            >
+            <Link to="/shop" className={`nav-link mx-2 ${active === "shop" ? "active" : ""}`}>
               Shop
             </Link>
-            <Link
-              to="/profile"
-              className={`nav-link px-0 px-lg-2 ${active === "profile" ? "active" : ""}`}
-            >
-              Profile
-            </Link>
-            <Link
-              to="/product"
-              className={`nav-link px-0 px-lg-2 ${active === "product" ? "active" : ""}`}
-            >
+            <Link to="/product" className={`nav-link mx-2 ${active === "product" ? "active" : ""}`}>
               Product
             </Link>
             <li className="nav-item dropdown">
@@ -76,6 +58,7 @@ const NavbarComponent = () => {
             </li>
           </ul>
 
+          {/* Search bar */}
           <form className="d-flex w-100" role="search">
             <div className="input-group">
               <input
@@ -86,16 +69,13 @@ const NavbarComponent = () => {
               />
             </div>
           </form>
-
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link
-                to="/cart"
-                className={`nav-link px-0 px-lg-2 ${active === "cart" ? "active" : ""}`}
-              >
-                Cart
-              </Link>
-            </li>
+            <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-3 ${active === "profile" ? "active" : ""}`}>
+              <i className="bx bx-user bx-sm align-middle"></i>
+            </Link>
+            <Link to="/cart" className={`nav-link px-0 px-lg-2 ${active === "cart" ? "active" : ""}`}>
+              <i className="bx bx-cart bx-sm align-middle"></i>
+            </Link>
           </ul>
         </div>
       </div>
