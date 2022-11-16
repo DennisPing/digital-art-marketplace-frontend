@@ -6,7 +6,7 @@ import "./index.css"
 const ProfileComponent = () => {
 
     const current_address = document.getElementById("current_address");
-    const new_address = document.getElementById("new_address");
+    const new_address_const = document.getElementById("new_address");
 
     function openForm() {
 
@@ -19,7 +19,7 @@ const ProfileComponent = () => {
         document.getElementById("address_form").style.display = "none";
         document.getElementById("edit-address-button").style.display = "block";
 
-        current_address.innerHTML = "change"
+        current_address.textContent = new_address_const.value
 
     }
 
@@ -37,18 +37,19 @@ const ProfileComponent = () => {
         <h4>Account Information</h4>
 
         <h5>Address</h5>
-        <div id={"current_address"}></div>
+        <p id="current_address"> Current address</p>
+
         <div className={"editing_form"} id={"address_form"} >
 
             <form>
 
                 <label htmlFor="address"><b>Address</b></label>
-                <input id={"new_address"} type="text" placeholder="Enter Address" name="new_address" ></input>
+                <input id="new_address" type="text" placeholder="Enter Address"  ></input>
 
 
             </form>
 
-            <button type="button" className="btn cancel" onClick={closeForm}>Close</button>
+            <button type="button" className="save-button" onClick={closeForm}>Save</button>
 
         </div>
       <button className="open-button" id={"edit-address-button"} onClick={openForm}>Edit</button>

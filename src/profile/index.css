@@ -1,13 +1,29 @@
 .open-button {
-    background-color: #555;
+    background-color: dodgerblue;
     color: white;
-    padding: 16px 20px;
+    padding: 12px 20px;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     bottom: 23px;
     right: 28px;
-    width: 280px;
+    width: 80px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.save-button {
+    background-color: gray;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    bottom: 23px;
+    right: 28px;
+    width: 80px;
+    height: 50px;
+    border-radius: 8px;
 }
 
 .editing_form{
