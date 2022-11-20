@@ -10,6 +10,7 @@
     width: 80px;
     height: 50px;
     border-radius: 8px;
+    margin: 5px;
 }
 
 .save-button {
@@ -24,6 +25,7 @@
     width: 80px;
     height: 50px;
     border-radius: 8px;
+    margin: 5px;
 }
 
 .editing_form{
