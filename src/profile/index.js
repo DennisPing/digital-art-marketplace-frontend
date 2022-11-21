@@ -5,8 +5,8 @@ import "./index.css"
 
 const ProfileComponent = () => {
 
-    const current_address = document.getElementById("current_address");
-    const new_address_const = document.getElementById("new_address");
+
+
 
     function openAddressForm() {
 
@@ -19,7 +19,8 @@ const ProfileComponent = () => {
         document.getElementById("address_form").style.display = "none";
         document.getElementById("edit-address-button").style.display = "block";
 
-        current_address.textContent = new_address_const.value
+        document.getElementById("current_address").innerHTML = document.getElementById("new_address").value
+
 
     }
 
@@ -33,6 +34,8 @@ const ProfileComponent = () => {
     function closeEmailForm() {
         document.getElementById("email_form").style.display = "none";
         document.getElementById("edit-email-button").style.display = "block";
+
+        document.getElementById("current_email").innerHTML = document.getElementById("new_email").value
 
 
 
@@ -48,6 +51,8 @@ const ProfileComponent = () => {
     function closePhoneForm() {
         document.getElementById("phone_form").style.display = "none";
         document.getElementById("edit-phone-button").style.display = "block";
+
+        document.getElementById("current_phone").innerHTML = document.getElementById("new_phone").value
 
 
 
@@ -86,7 +91,7 @@ const ProfileComponent = () => {
 
 
         <h5>Email</h5>
-        <p id="current_address"> Current email</p>
+        <p id="current_email"> Current email</p>
 
         <div className={"editing_form"} id={"email_form"} >
 
@@ -104,14 +109,14 @@ const ProfileComponent = () => {
         <button className="open-button" id={"edit-email-button"} onClick={openEmailForm}>Edit</button>
 
         <h5>Phone</h5>
-        <p id="current_address"> Current phone</p>
+        <p id="current_phone"> Current phone</p>
 
         <div className={"editing_form"} id={"phone_form"} >
 
             <form>
 
                 <label htmlFor="phone"><b>Phone</b></label>
-                <input id="new_email" type="text" placeholder="Enter Phone"  ></input>
+                <input id="new_phone" type="text" placeholder="Enter Phone"  ></input>
 
 
             </form>
