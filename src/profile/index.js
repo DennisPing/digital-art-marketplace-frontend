@@ -58,6 +58,20 @@ const ProfileComponent = () => {
 
     }
 
+    function DeleteAccountPopUp() {
+
+        document.getElementById("account_form").style.display = "block";
+        document.getElementById("delete_account_button").style.display = "none";
+
+    }
+
+    function closeDeleteAccountPopUp() {
+
+        document.getElementById("account_form").style.display = "none";
+        document.getElementById("delete_account_button").style.display = "block";
+
+    }
+
     return (
 
 
@@ -125,6 +139,18 @@ const ProfileComponent = () => {
 
         </div>
         <button className="open-button" id={"edit-phone-button"} onClick={openPhoneForm}>Edit</button>
+
+        <p></p>
+        <button className={"delete_account_button"} id={"delete_account_button"} onClick={DeleteAccountPopUp}>Delete Account</button>
+
+        <div className={"editing_form"} id={"account_form"} >
+
+            Delete account?
+
+            <button type="button" className="delete_account_button" onClick={closeDeleteAccountPopUp}>Yes, delete account</button>
+            <button type="button" className="save-button" onClick={closeDeleteAccountPopUp}>Cancel</button>
+
+        </div>
 
     </div>
 
