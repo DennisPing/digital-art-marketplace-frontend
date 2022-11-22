@@ -1,14 +1,6 @@
-import { Button, Descriptions } from 'antd';
-
 function ProductInfo({product}) {
   return (
       <div>
-        {/*<Descriptions title="Product Info">*/}
-        {/*  <Descriptions.Item label="Price"> {product.price}</Descriptions.Item>*/}
-        {/*  <Descriptions.Item label="Sold">{product.sold}</Descriptions.Item>*/}
-        {/*  <Descriptions.Item label="Creator"> {product.creator}</Descriptions.Item>*/}
-        {/*  <Descriptions.Item label="Description"> {product.description}</Descriptions.Item>*/}
-        {/*</Descriptions>*/}
 
         <ul className="list-group">
           <li className="list-group-item">
