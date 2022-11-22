@@ -6,6 +6,7 @@ import ProductComponent from "./product";
 import ProfileComponent from "./profile";
 import CartComponent from "./cart";
 import NavbarComponent from "./navbar";
+import CheckoutComponent from "./checkout";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="product" element={<ProductComponent />} />
           <Route path="profile" element={<ProfileComponent />} />
           <Route path="cart" element={<CartComponent />} />
+          <Route path="checkout" element={<CheckoutComponent />} />
         </Routes>
 
         <div className="d-inline-flex">

@@ -2,9 +2,7 @@ import "./index.css"
 
 
 
-
 const ProfileComponent = () => {
-
 
 
 
@@ -159,7 +157,12 @@ const ProfileComponent = () => {
 
 
 
+
+
   );
+
 };
 
+
 export default ProfileComponent;
+
