@@ -41,15 +41,18 @@
   overflow: hidden;
 }
 
-.item-counts{
+.item-counts {
   color: rgb(53, 56, 64);
   font-weight: bold;
-  stroke-width: 3px;
+  font-size: 20px;
 }
 
-button.tooltip {
-
+.item-counts button{
+  color: rgb(53, 56, 64);
+  font-weight: bold;
+  font-size: 20px;
 }
+
 
 .btn-wide {
   width:50%;

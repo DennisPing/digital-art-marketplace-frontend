@@ -34,28 +34,34 @@ function ProductInfo({product}) {
           </div>
         </div>
 
-        <div className="d-flex p-2 pb-0 fw-bolder h3">
+        <div className="d-flex p-2 pb-0 fw-bolder h2">
           {product.creator} #{product.id}
         </div>
 
-        <div className="d-flex p-2 pt-0 fw-bold mb-3">
+        <div className="d-flex p-2 pt-0 fw-bold mb-3 h6">
           <div className="me-2">Owned by</div>
           <div className="text-primary fw-bolder">{product.owner}</div>
         </div>
 
         <div className="d-inline-flex item-counts p-2 mb-3">
-          <div className="mt-2 me-3"><i className="bi bi-eye me-2"/><span>{product.view} views</span></div>
-          <button className="btn fw-bold"><i className="bi bi-heart me-2"/><span>{product.like} likes</span></button>
+          <div className="mt-2 me-3">
+            <i className="bi bi-eye me-2"/>
+            <span>{product.view} views</span>
+          </div>
+          <button className="btn">
+            <i className="bi bi-heart me-2"/>
+            <span>{product.like} likes</span>
+          </button>
         </div>
 
         <div className="border offer-border">
           <div className="d-flex px-3 py-4 border-bottom">
             <i className="bi bi-clock me-3"/>
-            <span className="fw-600">Sale ends December 25, 2022 at 5"09 AM GMT-8</span>
+            <span className="fw-600">Sale ends December 25, 2022 at 5:09 AM GMT-8</span>
           </div>
           <div className="px-3 py-4">
             <div className="mb-3 text-secondary">Current price</div>
-            <div className="mb-3 h3">0.04 ETH</div>
+            <div className="mb-4 me-3 h3">0.04 ETH<span className=" px-3 text-secondary">{product.price}</span></div>
             <div className="d-flex">
               <button type="button" className="btn btn-wide btn-primary btn-lg">
                 Add to cart
