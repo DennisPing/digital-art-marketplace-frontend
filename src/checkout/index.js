@@ -13,7 +13,9 @@ const CheckoutComponent = () => {
             <h5>Payment Method</h5>
             <div>
 
-                <p> &#xF2DC; *********0000</p>
+
+
+                <p> &#128179; *********0000</p>
                 <p>Exp: 3/27</p>
                 <p>user name on card</p>
             </div>
