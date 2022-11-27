@@ -3,7 +3,6 @@
 import product from "./product.json";
 import ProductImage from "./sections/product-image";
 import ProductInfo from "./sections/product-info";
-import { Row, Col } from "antd";
 
 
 const ProductComponent = () => {
