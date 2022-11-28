@@ -1,9 +1,21 @@
+// product summary
+
+import product from "./product.json";
+import ProductImage from "./sections/product-image";
+import ProductInfo from "./sections/product-info";
+
+
 const ProductComponent = () => {
   return (
-    <div>
-      <h1>This is the Product page</h1>
-      <h3>In the future, the URL would look like /product/:id</h3>
-    </div>
+      <div className="row mt-5">
+        <div className="col-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+          <ProductImage product={product} />
+        </div>
+        <div className="col-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
+          <ProductInfo product={product} />
+        </div>
+      </div>
+
   );
 };
 

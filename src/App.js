@@ -7,6 +7,8 @@ import ProfileComponent from "./profile";
 import CartComponent from "./cart";
 import NavbarComponent from "./navbar";
 
+// Temporary comment to trigger a deploy
+
 function App() {
   return (
     <BrowserRouter>
