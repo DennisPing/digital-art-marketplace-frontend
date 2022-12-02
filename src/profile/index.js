@@ -1,5 +1,9 @@
 import "./index.css"
 
+// notes for showing the subscribe/unsubscribe button, depending on user type
+//// {tuit.liked && <i onClick={() => dislikeTuitHandler(tuit)} className="bi bi-heart-fill text-danger"></i> }
+//   {!tuit.liked && <i onClick={() => likeTuitHandler(tuit)} className="bi bi-heart"></i> }
+
 
 
 const ProfileComponent = () => {
@@ -18,6 +22,7 @@ const ProfileComponent = () => {
         document.getElementById("edit-username-button").style.display = "block";
 
         document.getElementById("current_username").innerHTML = document.getElementById("new_username").value
+        document.getElementById("current_username2").innerHTML = document.getElementById("new_username").value
 
 
     }
@@ -120,6 +125,12 @@ const ProfileComponent = () => {
 
             <p></p>
 
+            <button className={"subscribe-button"}>Un/Subscribe</button>
+
+
+
+            <p></p>
+
             <button className={"delete_account_button"} id={"delete_account_button"} onClick={DeleteAccountPopUp}>Delete Account</button>
 
             <div className={"editing_form"} id={"account_form"} >
@@ -139,7 +150,7 @@ const ProfileComponent = () => {
         <h4>Account Information</h4>
 
         <h5>Username</h5>
-        <p id="current_username"> Current username</p>
+        <p id="current_username2"> Current username</p>
 
         <div className={"editing_form"} id={"username_form"} >
 
@@ -172,7 +183,7 @@ const ProfileComponent = () => {
                 <button type="button" className="save-button" onClick={closeFirstNameForm}>Save</button>
 
             </div>
-            <button className="open-button" id={"edit-username-button"} onClick={openFirstNameForm}>Edit</button>
+            <button className="open-button" id={"edit-firstname-button"} onClick={openFirstNameForm}>Edit</button>
 
             <h5>Last Name</h5>
             <p id="current_lastname"> Current Last Name</p>
@@ -190,7 +201,7 @@ const ProfileComponent = () => {
                 <button type="button" className="save-button" onClick={closeLastNameForm}>Save</button>
 
             </div>
-            <button className="open-button" id={"edit-username-button"} onClick={openLastNameForm}>Edit</button>
+            <button className="open-button" id={"edit-lastname-button"} onClick={openLastNameForm}>Edit</button>
 
 
         <h5>Email</h5>
