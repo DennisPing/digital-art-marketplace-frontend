@@ -1,7 +1,18 @@
+import "./index.css"
+import {Link} from "react-router-dom";
+
 const CartComponent = () => {
-  return (
+
+
+    return (
     <div>
-      <h1>This is the Cart page</h1>
+      <h1>Your Cart</h1>
+
+        <div>Your cart is empty</div>
+
+        <Link to="/checkout">
+        <button className={'checkout-button'} >Checkout</button>
+        </Link>
     </div>
   );
 };
