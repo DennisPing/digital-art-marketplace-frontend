@@ -251,7 +251,7 @@ const ProfileComponent = () => {
         </div>
         <button className="open-button" id={"edit-phone-button"} onClick={openPhoneForm}>Edit</button>
 
-        <p></p>
+
 
 
         </div>
