@@ -54,14 +54,19 @@
 
 .user-avatar-block{
 
-    float: left;
+float: left;
+
 
 
 }
 
 .user-info-block{
 
-    float: right;
+
+
+
+   float: right;
+
 
 
 }

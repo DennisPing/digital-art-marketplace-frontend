@@ -109,6 +109,15 @@ const ProfileComponent = () => {
 
     }
 
+    function subscribe() {
+
+        document.getElementById("subscribe").style.backgroundColor="grey";
+        document.getElementById("subscribe").innerHTML = "Subscribed"
+
+
+    }
+
+
     return (
 
 
@@ -127,7 +136,7 @@ const ProfileComponent = () => {
 
             <p></p>
 
-            <button className={"subscribe-button"}>Un/Subscribe</button>
+            <button id={"subscribe"} className={"subscribe-button"} onClick={subscribe}>Subscribe</button>
 
 
 
@@ -242,7 +251,7 @@ const ProfileComponent = () => {
         </div>
         <button className="open-button" id={"edit-phone-button"} onClick={openPhoneForm}>Edit</button>
 
-        <p></p>
+
 
 
         </div>

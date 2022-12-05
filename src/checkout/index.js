@@ -5,8 +5,6 @@ const CheckoutComponent = () => {
         <div>
             <h1>Checkout</h1>
 
-            <h5>Shipping Address</h5>
-            user's current address
 
 
 
