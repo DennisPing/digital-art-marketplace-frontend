@@ -1,6 +1,16 @@
 
 
 const CheckoutComponent = () => {
+
+
+    function submit_order() {
+
+        document.getElementById("submit-order-button").style.backgroundColor="grey";
+        document.getElementById("submit-order-button").innerHTML = "Submitted"
+
+
+    }
+
     return (
         <div>
             <h1>Checkout</h1>
@@ -25,7 +35,7 @@ const CheckoutComponent = () => {
 
 
 
-            <button className={'checkout-button'}>Submit Order</button>
+            <button className={'checkout-button'} id={"submit-order-button"} onClick={submit_order}>Submit Order</button>
         </div>
     );
 };
