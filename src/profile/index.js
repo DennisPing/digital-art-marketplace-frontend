@@ -1,4 +1,14 @@
 import "./index.css"
+import {useDispatch} from "react-redux";
+import React from "react";
+import userReducer from "./user-reducer";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {deleteUserThunk, createUserThunk} from "../services/users-thunks";
+const store = createStore(userReducer);
+
+
+
 
 // notes for showing the subscribe/unsubscribe button, depending on user type
 //// {tuit.liked && <i onClick={() => dislikeTuitHandler(tuit)} className="bi bi-heart-fill text-danger"></i> }
@@ -8,7 +18,12 @@ import "./index.css"
 
 
 
+
+
 const ProfileComponent = () => {
+
+  //  const dispatch = useDispatch();
+
 
 
 
@@ -118,7 +133,18 @@ const ProfileComponent = () => {
     }
 
 
+
+    const deleteAccountHandler = (id) => {
+
+      //  dispatch(deleteUserThunk(id));
+        console.log("deleteUserThunk reached")
+    }
+
+
+
     return (
+
+        <Provider store={store}>
 
 
     <div>
@@ -148,7 +174,7 @@ const ProfileComponent = () => {
 
                 Delete account?
 
-                <button type="button" className="delete_account_button" onClick={closeDeleteAccountPopUp}>Yes, delete account</button>
+                <button type="button" className="delete_account_button" onClick={deleteAccountHandler} >Yes, delete account</button>
                 <button type="button" className="save-button" onClick={closeDeleteAccountPopUp}>Cancel</button>
 
             </div>
@@ -258,6 +284,7 @@ const ProfileComponent = () => {
 
     </div>
 
+        </Provider>
 
 
 
