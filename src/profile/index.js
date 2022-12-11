@@ -4,7 +4,7 @@ import React from "react";
 import userReducer from "./user-reducer";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {deleteUserThunk, createUserThunk} from "../services/users-thunks";
+import {deleteUserThunk} from "../services/users-thunks";
 const store = createStore(userReducer);
 
 
@@ -22,7 +22,7 @@ const store = createStore(userReducer);
 
 const ProfileComponent = () => {
 
-  //  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
 
 
@@ -136,7 +136,7 @@ const ProfileComponent = () => {
 
     const deleteAccountHandler = (id) => {
 
-      //  dispatch(deleteUserThunk(id));
+        dispatch(deleteUserThunk(id));
         console.log("deleteUserThunk reached")
     }
 
