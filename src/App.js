@@ -6,7 +6,8 @@ import ProductComponent from "./product";
 import ProfileComponent from "./profile";
 import CartComponent from "./cart";
 import NavbarComponent from "./navbar";
-import LoginAndRegister from "./LoginAndRegister";
+import Login from "./login";
+import RegisterComponent from "./register";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="product" element={<ProductComponent />} />
           <Route path="profile" element={<ProfileComponent />} />
           <Route path="cart" element={<CartComponent />} />
-          <Route path="login/register" element={<LoginAndRegister />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<RegisterComponent />} />
         </Routes>
 
         <div className="d-inline-flex">

@@ -70,7 +70,7 @@ const NavbarComponent = () => {
             </div>
           </form>
           <ul className="navbar-nav">
-            <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-3 ${active === "profile" ? "active" : ""}`}>
+            <Link to="/login" className={`nav-link px-0 px-lg-2 mx-3 ${active === "profile" ? "active" : ""}`}>
               <i className="bx bx-user bx-sm align-middle"></i>
             </Link>
             <Link to="/cart" className={`nav-link px-0 px-lg-2 ${active === "cart" ? "active" : ""}`}>
