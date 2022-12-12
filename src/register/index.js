@@ -3,20 +3,39 @@ import "./index.css"
 
 
 
+const user = {
 
+    username: "",
+    password: ""
 
+}
 
+function register(user){
 
-function registerUser(){
-
-    const username = document.getElementById("usernameField").value
-    const password = document.getElementById("passwordField").value
-    console.log(username)
-    console.log(password)
-    console.log("registerUser() reached")
+    console.log("user registered")
 
 
 }
+
+
+
+function registerHandler(){
+
+    const username = document.getElementById("usernameField").value
+    const password = document.getElementById("passwordField").value
+    user.username = username
+    user.password = password
+
+    console.log(user)
+
+    console.log("registerUser() reached")
+
+    register(user)
+
+
+}
+
+
 
 const RegisterComponent = () => {
     return (
@@ -38,7 +57,7 @@ const RegisterComponent = () => {
                 placeholder={"password"}
             />
 
-            <button className={"register-button"} onClick={registerUser} >Register</button>
+            <button className={"register-button"} onClick={registerHandler} >Register</button>
 
             <p></p>
 
