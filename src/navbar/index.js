@@ -7,13 +7,15 @@ const NavbarComponent = () => {
   const active = paths[1];
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid px-0">
-        <Link to="/home" className="navbar-brand nav-link fs-4">
+    <nav className="navbar navbar-expand-lg">
+      <div className="container-fluid px-0 py-2">
+        <Link to="/home" className="navbar-brand nav-link fs-4 fw-bold">
           Expensive JPEGs
         </Link>
+
+        {/* Hamburger menu */}
         <button
-          className="navbar-toggler"
+          className="navbar-toggler mb-3"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -23,15 +25,29 @@ const NavbarComponent = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+        {/* Search bar */}
+        <form className="d-flex w-100" role="search">
+          <div className="input-group">
+            <input
+              className="form-control form-control-lg mx-0 mx-lg-2 rounded-pill"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </div>
+        </form>
+
+        {/* Navbar links */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <Link to="/shop" className={`nav-link mx-2 ${active === "shop" ? "active" : ""}`}>
-              Shop
+            <Link to="/collection" className={`nav-link mx-2 ${active === "collection" ? "active" : ""}`}>
+              Explore
             </Link>
             <Link to="/product" className={`nav-link mx-2 ${active === "product" ? "active" : ""}`}>
               Product
             </Link>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown mx-2">
               <a
                 className="nav-link dropdown-toggle"
                 href="/#"
@@ -56,24 +72,10 @@ const NavbarComponent = () => {
                 </Link>
               </ul>
             </li>
-          </ul>
-
-          {/* Search bar */}
-          <form className="d-flex w-100" role="search">
-            <div className="input-group">
-              <input
-                className="form-control form-control-lg mx-0 mx-lg-2 rounded-pill"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </div>
-          </form>
-          <ul className="navbar-nav">
-            <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-3 ${active === "profile" ? "active" : ""}`}>
+            <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-2 ${active === "profile" ? "active" : ""}`}>
               <i className="bx bx-user bx-sm align-middle"></i>
             </Link>
-            <Link to="/cart" className={`nav-link px-0 px-lg-2 ${active === "cart" ? "active" : ""}`}>
+            <Link to="/cart" className={`nav-link px-0 px-lg-2 mx-2 ${active === "cart" ? "active" : ""}`}>
               <i className="bx bx-cart bx-sm align-middle"></i>
             </Link>
           </ul>
