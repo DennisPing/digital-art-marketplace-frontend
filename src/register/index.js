@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import "./index.css"
+import {register} from "../services/userService";
 
 
 
@@ -10,12 +11,7 @@ const user = {
 
 }
 
-function register(user){
 
-    console.log("user registered")
-
-
-}
 
 
 
