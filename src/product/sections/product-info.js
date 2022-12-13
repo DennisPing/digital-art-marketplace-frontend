@@ -43,25 +43,32 @@ function ProductInfo({product}) {
           <div className="text-primary fw-bolder">{product.owner}</div>
         </div>
 
-        <div className="d-inline-flex item-counts p-2 mb-3">
-          <div className="mt-2 me-3">
-            <i className="bi bi-eye me-2"/>
-            <span>{product.view} views</span>
-          </div>
-          <button className="btn">
+        <div className="d-inline-flex item-counts mb-3">
+          <button className="btn" data-tip data-for="likeThisItem">
             <i className="bi bi-heart me-2"/>
             <span>{product.like} likes</span>
           </button>
+          <ReactTooltip id="likeThisItem" place="top" effect="solid">
+            Like this item
+          </ReactTooltip>
         </div>
 
         <div className="border offer-border">
-          <div className="d-flex px-3 py-4 border-bottom">
-            <i className="bi bi-clock me-3"/>
-            <span className="fw-600">Sale ends December 25, 2022 at 5:09 AM GMT-8</span>
+          <div className="px-3 py-3 border-bottom">
+            <div className="mb-3 text-secondary">Title</div>
+            <div className="fw-600">{product.title}</div>
           </div>
-          <div className="px-3 py-4">
+          <div className="px-3 py-3 border-bottom">
+            <div className="mb-3 text-secondary">Collection</div>
+            <div className="fw-600">{product.collection}</div>
+          </div>
+          <div className="px-3 py-3 border-bottom">
+            <div className="mb-3 text-secondary">Description</div>
+            <div className="fw-600">{product.description}</div>
+          </div>
+          <div className="px-3 py-3 border-bottom">
             <div className="mb-3 text-secondary">Current price</div>
-            <div className="mb-4 me-3 h3">0.04 ETH<span className=" px-3 text-secondary">{product.price}</span></div>
+            <div className="mb-4 me-3 h2">{product.price}</div>
             <div className="d-flex">
               <button type="button" className="btn btn-wide btn-primary btn-lg">
                 Add to cart
