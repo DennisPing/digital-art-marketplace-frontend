@@ -1,39 +1,39 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {getProductThunk, getProductTransactionThunk} from "../services/product-thunks"
+import { createSlice } from "@reduxjs/toolkit";
+import { getProductThunk, getProductTransactionThunk } from "../services/product/product-thunk";
 
 const initialState = {
   product: {},
   transactions: [],
-  loading: false
-}
+  loading: false,
+};
 
 const productSlice = createSlice({
-  name: "product",
+  name: "products",
   initialState,
   extraReducers: {
     [getProductThunk.pending]: (state) => {
       state.loading = true;
-      state.product = {}
+      state.product = {};
     },
-    [getProductThunk.fulfilled]: (state, {payload}) => {
+    [getProductThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.product = payload;
     },
     [getProductThunk.rejected]: (state) => {
-      state.loading = false
+      state.loading = false;
     },
     [getProductTransactionThunk.pending]: (state) => {
       state.loading = false;
-      state.transactions = []
+      state.transactions = [];
     },
-    [getProductTransactionThunk.fulfilled]: (state, {payload}) => {
+    [getProductTransactionThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.transactions = payload
+      state.transactions = payload;
     },
     [getProductTransactionThunk.rejected]: (state) => {
-      state.loading = false
-    }
+      state.loading = false;
+    },
   },
-})
+});
 
 export default productSlice.reducer;

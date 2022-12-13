@@ -8,7 +8,7 @@ const HeroComponent = () => {
         <div className="p-5">
           <h1 className="fw-bold">Explore, Buy, Collect Digital Art</h1>
           <div className="py-4">
-            <Link to="/collection">
+            <Link to="/explore">
               <button className="btn btn-primary px-3 rounded-pill">Explore Collections</button>
             </Link>
           </div>
@@ -17,7 +17,7 @@ const HeroComponent = () => {
           <img
             src="https://i.seadn.io/gae/XXB5mRLtt6lO3PGA413cOCI9jSi1Fe6FSLVVhdUkaaHVHLs_aOcFNMxIbI_xdXE1uZ5xe5M3SQxq_HOGCQ6gYeFTMYOktBimNCuWq_0?auto=format&w=1000"
             alt=""
-            className="img-fluid rounded-5"
+            className="img-fluid rounded-4"
           />
         </div>
       </div>

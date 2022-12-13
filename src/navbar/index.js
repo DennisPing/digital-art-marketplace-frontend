@@ -41,7 +41,7 @@ const NavbarComponent = () => {
         {/* Navbar links */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <Link to="/collection" className={`nav-link mx-2 ${active === "collection" ? "active" : ""}`}>
+            <Link to="/explore" className={`nav-link mx-2 ${active === "explore" ? "active" : ""}`}>
               Explore
             </Link>
             <Link to="/product" className={`nav-link mx-2 ${active === "product" ? "active" : ""}`}>
