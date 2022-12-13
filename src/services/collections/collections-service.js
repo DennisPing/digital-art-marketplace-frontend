@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const COLLECTION_API = "http://localhost:4000/api/collection";
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 export const getCollections = async () => {
-  const response = await axios.get(`${COLLECTION_API}`);
+  const response = await axios.get(`${API_BASE}/api/collection`);
   return response.data;
 };
