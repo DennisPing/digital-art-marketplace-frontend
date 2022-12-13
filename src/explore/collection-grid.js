@@ -19,8 +19,7 @@ const CollectionGrid = () => {
     <>
       {loading && <div>Loading...</div>}
 
-      {/* Flex collection items with padding inbetween */}
-      <div className="d-flex flex-row flex-wrap">
+      <div className="row gy-5">
         {collections.map((collection) => (
           <CollectionItem key={collection.contractAddress} collection={collection} />
         ))}
