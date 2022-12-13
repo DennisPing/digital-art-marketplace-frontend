@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const SHOP_API = "http://localhost:4000/api/shop";
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 export const getShop = async (constractAddress, page) => {
-  const response = await axios.get(`${SHOP_API}/${constractAddress}/${page}`);
+  const response = await axios.get(`${API_BASE}/api/shop/${constractAddress}/${page}`);
   return response.data;
 };
