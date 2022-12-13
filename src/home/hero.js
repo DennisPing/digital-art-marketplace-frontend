@@ -8,7 +8,7 @@ const HeroComponent = () => {
         <div className="p-5">
           <h1 className="fw-bold">Explore, Buy, Collect Digital Art</h1>
           <div className="py-4">
-            <Link to="/collection">
+            <Link to="/explore">
               <button className="btn btn-primary px-3 rounded-pill">Explore Collections</button>
             </Link>
           </div>

@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
 import HomeComponent from "./home";
-import CollectionComponent from "./collection";
+import ExploreComponent from "./explore";
 import ShopComponent from "./shop";
 import ProductComponent from "./product";
 import ProfileComponent from "./profile";
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route index element={<Navigate replace to="home" />} />
           <Route path="home" element={<HomeComponent />} />
-          <Route path="collection" element={<CollectionComponent />} />
+          <Route path="explore" element={<ExploreComponent />} />
           <Route path="shop" element={<ShopComponent />} />
           <Route path="product" element={<ProductComponent />} />
           <Route path="profile" element={<ProfileComponent />} />
