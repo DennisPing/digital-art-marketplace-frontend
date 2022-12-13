@@ -12,11 +12,11 @@ const collectionsSlice = createSlice({
   extraReducers: {
     [getCollectionsThunk.pending]: (state) => {
       state.loading = true;
-      state.product = {};
+      state.collections = [];
     },
     [getCollectionsThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.product = payload;
+      state.collections = payload;
     },
     [getCollectionsThunk.rejected]: (state) => {
       state.loading = false;

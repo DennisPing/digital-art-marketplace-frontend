@@ -12,11 +12,11 @@ const shopSlice = createSlice({
   extraReducers: {
     [getShopThunk.pending]: (state) => {
       state.loading = true;
-      state.product = {};
+      state.shop = [];
     },
     [getShopThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.product = payload;
+      state.shop = payload;
     },
     [getShopThunk.rejected]: (state) => {
       state.loading = false;
