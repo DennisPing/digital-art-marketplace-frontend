@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 function loginUser(){
 
@@ -7,6 +8,11 @@ function loginUser(){
     console.log(username)
     console.log(password)
     console.log("loginUser() reached")
+
+    // log the user in
+    //const dispatch = useDispatch()
+    const loginUser = (username, password)
+    //dispatch(LoginThunk(loginUser))
 
 
 }

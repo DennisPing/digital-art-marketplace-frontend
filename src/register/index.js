@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import "./index.css"
-import {create} from "../services/userService";
+import {create} from "../services/users/userService";
 
 
 
