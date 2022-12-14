@@ -3,6 +3,7 @@ import { getShopThunk } from "../services/shop/shop-thunk";
 
 const initialState = {
   shop: [],
+  page: 1,
   loading: false,
 };
 
