@@ -13,7 +13,7 @@ const ProductInfo = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductThunk({ contractAddress, tokenId}));
-  }, []);
+  }, [dispatch, contractAddress, tokenId]);
 
     return (
       <div>

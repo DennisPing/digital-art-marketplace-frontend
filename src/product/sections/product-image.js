@@ -13,7 +13,7 @@ const ProductImage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductThunk({ contractAddress, tokenId}));
-  }, []);
+  }, [dispatch, contractAddress, tokenId]);
 
   return (
       <div className="border image-border">
