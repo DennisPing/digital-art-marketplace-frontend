@@ -1,16 +1,15 @@
 .checkout-button {
-    background-color: maroon;
-    color: white;
+    background-color: #0275d8;
     padding: 12px 20px;
     border: none;
     cursor: pointer;
     opacity: 0.8;
     bottom: 23px;
     right: 28px;
-    width: 150px;
+    width: 200px;
     height: 50px;
     border-radius: 8px;
-    margin: 5px;
+    margin: 20px;
 }
 
 .cart{
