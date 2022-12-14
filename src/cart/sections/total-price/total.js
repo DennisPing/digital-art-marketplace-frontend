@@ -1,5 +1,7 @@
 import './total.css';
-import cartItemArray from "./cartItems.json";
+
+import cartItemArray from "../../cart-items.json";
+
 // import {useSelector} from 'react-redux';
 
 function Total() {
@@ -18,7 +20,7 @@ function Total() {
 
   return (
       <div className="total">
-        <h2>ORDER SUMMARY</h2>
+        <h2>Order Summary</h2>
         <div>
           <p className="total__p">
             total ({getTotal().totalQuantity} items)

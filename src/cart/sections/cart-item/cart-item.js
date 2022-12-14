@@ -1,5 +1,5 @@
-import './cartItem.css';
-import { removeItem} from '../reducers/cart-reducer.js';
+import './cart-item.css';
+import { removeItem} from '../../../reducers/cart-reducer.js';
 import { useDispatch } from 'react-redux'
 
 function CartItem({id, image, title, price}) {
