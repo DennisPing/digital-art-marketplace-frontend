@@ -1,4 +1,4 @@
-import './cartItem.css';
+import './cart-item.css';
 import { removeItem} from '../../../reducers/cart-reducer.js';
 import { useDispatch } from 'react-redux'
 

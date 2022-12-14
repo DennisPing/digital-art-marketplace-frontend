@@ -1,7 +1,7 @@
 import './index.css';
-import cartItemArray from "./cartItems.json";
-import Total from './sections/totalPrice/total';
-import CartItem from './sections/cartItem/cartItem';
+import cartItemArray from "./cart-items.json";
+import Total from './sections/total-price/total';
+import CartItem from './sections/cart-item/cart-item';
 // import { useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
 
