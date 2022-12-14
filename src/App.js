@@ -15,13 +15,14 @@ import CheckoutComponent from "./checkout";
 import collectionsReducer from "./reducers/collections-reducer";
 import shopReducer from "./reducers/shop-reducer";
 import productReducer from "./reducers/product-reducer";
+import cartReducer from "./reducers/cart-reducer";
 
 const store = configureStore({
   reducer: {
     collections: collectionsReducer,
     shop: shopReducer,
     product: productReducer,
-    // cart: cartReducer,
+    cart: cartReducer,
     // user: userReducer,
   },
 });
