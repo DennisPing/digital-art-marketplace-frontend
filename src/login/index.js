@@ -19,18 +19,13 @@ import {loginThunk} from "../services/users/user-thunks";
 
 //}
 
-const user = {
 
-    username: "",
-    password: "",
-
-
-}
 
 const LoginComponent = () => {
 
-   user.username = document.getElementById("usernameLoginField").value
-    user.password = document.getElementById("passwordLoginField").value
+
+  // user.username = document.getElementById("usernameLoginField").value
+  //  user.password = document.getElementById("passwordLoginField").value
 
 
 
@@ -40,6 +35,8 @@ const LoginComponent = () => {
 
         dispatch(loginThunk(user))
     }
+
+    const currentUser = {}
 
     return (
 
@@ -57,7 +54,8 @@ const LoginComponent = () => {
                 placeholder={"password"}
             />
 
-            <button className={"register-button"} onClick={loginHandler}>Login</button>
+
+            <button className={"register-button"} onClick={loginHandler(currentUser)}>Login</button>
 
             <p></p>
 

@@ -2,33 +2,33 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {createUserThunk, loginThunk} from "../services/users/user-thunks"
 
-const currentUser = {
+const user = {
 
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: ""
+    username: "un",
+    password: "pw",
+    firstName: "fn",
+    lastName: "lm",
+    email: "email@email.com",
+    phone: "000-000-0000"
 
 };
 
 const userSlice = createSlice({
 
-        name: "currentUser",
-        currentUser,
+        name: "user",
+        user,
 
         extraReducers: {
 
             [createUserThunk.fulfilled]: (state, action) => {
 
-                state.currentUser = action.payload
+                state.user = action.payload
 
             },
 
             [loginThunk.fulfilled]: (state, action) => {
 
-                state.currentUser = action.payload
+                state.user = action.payload
 
             },
         }
