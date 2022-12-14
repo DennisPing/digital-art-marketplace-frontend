@@ -15,6 +15,8 @@ import CheckoutComponent from "./checkout";
 import collectionsReducer from "./reducers/collections-reducer";
 import shopReducer from "./reducers/shop-reducer";
 import productReducer from "./reducers/product-reducer";
+import LoginComponent from "./login";
+import RegisterComponent from "./register";
 
 const store = configureStore({
   reducer: {
@@ -41,6 +43,8 @@ function App() {
             <Route path="profile" element={<ProfileComponent />} />
             <Route path="cart" element={<CartComponent />} />
             <Route path="checkout" element={<CheckoutComponent />} />
+            <Route path="login" element={<LoginComponent />} />
+            <Route path="register" element={<RegisterComponent />} />
           </Routes>
 
           <div className="d-inline-flex">
