@@ -1,19 +1,15 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import CollectionItem from "./collection-item";
-// import { fetchCollectionsThunk } from "../services/collections-thunk";
-
-import collections from "../collections.json";
+import { getCollectionsThunk } from "../services/collections/collections-thunk";
 
 const CollectionGrid = () => {
-  // const { collections, loading } = useSelector((state) => state.collections);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchCollectionsThunk());
-  // }, []);
-
-  const loading = false;
+  const { collections, loading } = useSelector((state) => state.collections);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCollectionsThunk());
+  }, [dispatch]);
 
   return (
     <>
@@ -27,4 +23,5 @@ const CollectionGrid = () => {
     </>
   );
 };
+
 export default CollectionGrid;

@@ -15,6 +15,7 @@ import CheckoutComponent from "./checkout";
 import collectionsReducer from "./reducers/collections-reducer";
 import shopReducer from "./reducers/shop-reducer";
 import productReducer from "./reducers/product-reducer";
+import cartReducer from "./reducers/cart-reducer";
 import LoginComponent from "./login";
 import RegisterComponent from "./register";
 
@@ -23,7 +24,7 @@ const store = configureStore({
     collections: collectionsReducer,
     shop: shopReducer,
     product: productReducer,
-    // cart: cartReducer,
+    cart: cartReducer,
     // user: userReducer,
   },
 });
@@ -38,8 +39,8 @@ function App() {
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<HomeComponent />} />
             <Route path="explore" element={<ExploreComponent />} />
-            <Route path="shop" element={<ShopComponent />} />
-            <Route path="product" element={<ProductComponent />} />
+            <Route path="shop/:name/:page" element={<ShopComponent />} />
+            <Route path="product/:contractAddress/:tokenId" element={<ProductComponent />} />
             <Route path="profile" element={<ProfileComponent />} />
             <Route path="cart" element={<CartComponent />} />
             <Route path="checkout" element={<CheckoutComponent />} />
