@@ -1,0 +1,9 @@
+.wd-top-rounded-corners {
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+}
+
+.wd-bot-rounded-corners {
+  border-bottom-left-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+}

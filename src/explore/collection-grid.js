@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import CollectionItem from "./collection-item";
 import { getCollectionsThunk } from "../services/collections/collections-thunk";
 
-// import collections from "../collections.json";
-
 const CollectionGrid = () => {
   const { collections, loading } = useSelector((state) => state.collections);
   const dispatch = useDispatch();
@@ -25,4 +23,5 @@ const CollectionGrid = () => {
     </>
   );
 };
+
 export default CollectionGrid;

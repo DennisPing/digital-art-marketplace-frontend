@@ -36,8 +36,8 @@ function App() {
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<HomeComponent />} />
             <Route path="explore" element={<ExploreComponent />} />
-            <Route path="shop" element={<ShopComponent />} />
-            <Route path="product" element={<ProductComponent />} />
+            <Route path="shop/:name/:page" element={<ShopComponent />} />
+            <Route path="product/:contractAddress/:tokenId" element={<ProductComponent />} />
             <Route path="profile" element={<ProfileComponent />} />
             <Route path="cart" element={<CartComponent />} />
             <Route path="checkout" element={<CheckoutComponent />} />
