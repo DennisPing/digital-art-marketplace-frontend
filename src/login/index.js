@@ -1,23 +1,46 @@
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {loginThunk} from "../services/users/user-thunks";
 
-function loginUser(){
 
-    const username = document.getElementById("usernameLoginField").value
-    const password = document.getElementById("passwordLoginField").value
-    console.log(username)
-    console.log(password)
-    console.log("loginUser() reached")
+//function LoginUser(){
+
+   // const username = document.getElementById("usernameLoginField").value
+   // const password = document.getElementById("passwordLoginField").value
+   // console.log(username)
+  //  console.log(password)
+   // console.log("loginUser() reached")
 
     // log the user in
-    //const dispatch = useDispatch()
-    const loginUser = (username, password)
-    //dispatch(LoginThunk(loginUser))
+   // const dispatch = useDispatch()
+   // const loginUser = (username, password)
+    //dispatch(loginThunk(loginUser))
+
+
+//}
+
+const user = {
+
+    username: "",
+    password: "",
 
 
 }
 
 const LoginComponent = () => {
+
+   user.username = document.getElementById("usernameLoginField").value
+    user.password = document.getElementById("passwordLoginField").value
+
+
+
+    const dispatch = useDispatch()
+
+    const loginHandler = (user) =>{
+
+        dispatch(loginThunk(user))
+    }
+
     return (
 
         <div>
@@ -34,7 +57,7 @@ const LoginComponent = () => {
                 placeholder={"password"}
             />
 
-            <button className={"register-button"} onClick={loginUser}>Login</button>
+            <button className={"register-button"} onClick={loginHandler}>Login</button>
 
             <p></p>
 

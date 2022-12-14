@@ -10,4 +10,9 @@ export const create = async (user) => {
     return response.data;
 }
 
-// fetch profile
+// login user
+export const login = async (user) => {
+    const response = await axios
+        .post(`${USERS_API}`, user);
+    return response.data;
+}
