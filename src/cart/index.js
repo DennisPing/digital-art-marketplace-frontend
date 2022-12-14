@@ -1,33 +1,13 @@
-// import "./index.css"
-// import {Link} from "react-router-dom";
-//
-// const CartComponent = () => {
-//
-//
-//     return (
-//     <div>
-//       <h1>Your Cart</h1>
-//
-//         <div>Your cart is empty</div>
-//
-//         <Link to="/checkout">
-//         <button className={'checkout-button'} >Checkout</button>
-//         </Link>
-//     </div>
-//   );
-// };
-//
-// export default CartComponent;
-
-import './index.css'
+import './index.css';
 import cartItemArray from "./cartItems.json";
 import Total from './total';
 import CartItem from './cartItem';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import {Link} from "react-router-dom";
 
 function CartComponent() {
 
-  const cart = useSelector((state) => state.cart)
+  // const cart = useSelector((state) => state.cart)
 
   return (
       <div className="cart">
@@ -41,7 +21,6 @@ function CartComponent() {
                     image={item.image}
                     title={item.title}
                     price={item.price}
-                    quantity={item.quantity}
                 />
             ))}
           </div>
@@ -49,8 +28,9 @@ function CartComponent() {
 
         <div className="cart__right">
           <Total/>
+          <Link to="/checkout"><button className={'checkout-button'} >Checkout</button>
+          </Link>
         </div>
-
       </div>
   )
 }

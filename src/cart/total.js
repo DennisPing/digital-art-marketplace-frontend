@@ -4,14 +4,14 @@ import {useSelector} from 'react-redux';
 
 function Total() {
 
-  const cart = useSelector((state) => state.cart)
+  // const cart = useSelector((state) => state.cart)
 
   const getTotal = () => {
     let totalQuantity = 0
     let totalPrice = 0
     cartItemArray.forEach(item => {
-      totalQuantity += item.quantity
-      totalPrice += item.price * item.quantity
+      totalQuantity += 1
+      totalPrice += item.price
     })
     return {totalPrice, totalQuantity}
   }
