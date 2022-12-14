@@ -1,6 +1,6 @@
 import './total.css';
 import cartItemArray from "./cartItems.json";
-import {useSelector} from 'react-redux';
+// import {useSelector} from 'react-redux';
 
 function Total() {
 

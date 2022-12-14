@@ -2,7 +2,7 @@ import './index.css';
 import cartItemArray from "./cartItems.json";
 import Total from './total';
 import CartItem from './cartItem';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
 
 function CartComponent() {
