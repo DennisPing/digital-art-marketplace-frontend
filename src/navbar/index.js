@@ -51,7 +51,7 @@ const NavbarComponent = () => {
             </Link>
             <Link
               to="/product"
-              className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "product" ? "active" : ""}`}
+              className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "login" ? "active" : ""}`}
             >
               Log In
             </Link>
