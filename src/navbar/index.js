@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 
+import "./navbar.css";
+
 const NavbarComponent = () => {
   const { pathname } = useLocation();
   const paths = pathname.split("/");
@@ -41,13 +43,19 @@ const NavbarComponent = () => {
         {/* Navbar links */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <Link to="/explore" className={`nav-link mx-2 ${active === "explore" ? "active" : ""}`}>
+            <Link
+              to="/explore"
+              className={`nav-link nav-btn-hover rounded-3 mx-2 ${active === "explore" ? "active" : ""}`}
+            >
               Explore
             </Link>
-            <Link to="/product" className={`nav-link mx-2 ${active === "product" ? "active" : ""}`}>
-              Product
+            <Link
+              to="/product"
+              className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "product" ? "active" : ""}`}
+            >
+              Log In
             </Link>
-            <li className="nav-item dropdown mx-2">
+            <li className="nav-item nav-btn-hover rounded-3 dropdown mx-2">
               <a
                 className="nav-link dropdown-toggle"
                 href="/#"
@@ -55,27 +63,30 @@ const NavbarComponent = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Profile
               </a>
               <ul className="dropdown-menu">
                 <Link to="#" className="dropdown-item">
-                  Action
+                  My Profile
                 </Link>
                 <Link to="#" className="dropdown-item">
-                  Another action
+                  My Collections
                 </Link>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <Link to="#" className="dropdown-item">
-                  Something else here
+                  Log Out
                 </Link>
               </ul>
             </li>
-            <Link to="/login" className={`nav-link px-0 px-lg-2 mx-2 ${active === "profile" ? "active" : ""}`}>
+            {/* <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-2 ${active === "profile" ? "active" : ""}`}>
               <i className="bx bx-user bx-sm align-middle"></i>
-            </Link>
-            <Link to="/cart" className={`nav-link px-0 px-lg-2 mx-2 ${active === "cart" ? "active" : ""}`}>
+            </Link> */}
+            <Link
+              to="/cart"
+              className={`nav-link nav-btn-hover rounded-3 px-0 px-lg-2 mx-2 ${active === "cart" ? "active" : ""}`}
+            >
               <i className="bx bx-cart bx-sm align-middle"></i>
             </Link>
           </ul>

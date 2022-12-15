@@ -4,7 +4,7 @@ import "./index.css";
 
 const ShopItem = ({ product }) => {
   return (
-    <div className="card col-3 border-0">
+    <div className="card col-12 col-md-6 col-lg-4 col-xl-3 border-0">
       <Link
         to={`/product/${product.contractAddress}/${product.tokenId}`}
         className="wd-hover-shadow text-decoration-none text-dark fw-semibold rounded-4"
