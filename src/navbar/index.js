@@ -66,7 +66,7 @@ const NavbarComponent = () => {
                 Profile
               </a>
               <ul className="dropdown-menu">
-                <Link to="#" className="dropdown-item">
+                <Link to="/profile" className="dropdown-item">
                   My Profile
                 </Link>
                 <Link to="#" className="dropdown-item">
