@@ -3,8 +3,7 @@ import { getShopThunk } from "../services/shop/shop-thunk";
 
 const initialState = {
   shop: [],
-  page: 1,
-  loading: false,
+  shopLoading: false,
 };
 
 const shopSlice = createSlice({
@@ -12,15 +11,15 @@ const shopSlice = createSlice({
   initialState,
   extraReducers: {
     [getShopThunk.pending]: (state) => {
-      state.loading = true;
+      state.shopLoading = true;
       state.shop = [];
     },
     [getShopThunk.fulfilled]: (state, { payload }) => {
-      state.loading = false;
+      state.shopLoading = false;
       state.shop = payload;
     },
     [getShopThunk.rejected]: (state) => {
-      state.loading = false;
+      state.shopLoading = false;
     },
   },
 });

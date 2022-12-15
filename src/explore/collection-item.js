@@ -9,7 +9,7 @@ const CollectionItem = ({ collection }) => {
   return (
     <div className="card col-12 col-md-6 col-lg-4 col-xl-3 border-0">
       <Link
-        to={`/shop/${collection.encodedName}/1`}
+        to={`/shop/${collection.encodedName}`}
         className="wd-hover-shadow text-decoration-none text-dark fw-semibold rounded-4"
       >
         <img src={collection.thumbnailUrl} className="card-img-top border wd-top-rounded-corners" alt="..." />
