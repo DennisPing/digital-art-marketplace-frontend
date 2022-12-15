@@ -21,6 +21,15 @@ const FormatPhoneNumber = (value) => {
   return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
 };
 
+// Tutorial: https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+const ValidateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
 const RegisterComponent = () => {
   // First, hold the profile data from the state
   const { user } = useSelector((state) => state.user);
@@ -42,6 +51,16 @@ const RegisterComponent = () => {
       return;
     }
     dispatch(createUserThunk(currUser));
+  };
+
+  // Validate email inside currUser
+  const [emailValid, setEmailValid] = useState(true);
+  const validateEmailHandler = () => {
+    if (currUser.email.length > 0) {
+      setEmailValid(ValidateEmail(currUser.email));
+    } else {
+      setEmailValid(true);
+    }
   };
 
   // Show password toggler
@@ -111,13 +130,16 @@ const RegisterComponent = () => {
         </div>
         <div className="form-floating my-3">
           <input
-            type="text"
-            className="form-control"
+            type="email"
+            className={`form-control ${emailValid ? "" : "is-invalid"}`}
             id="emailField"
             placeholder="Email Address"
             value={currUser.email}
             maxLength={64}
-            onChange={(e) => setUser({ ...currUser, email: e.target.value })}
+            onChange={(e) => {
+              setUser({ ...currUser, email: e.target.value });
+            }}
+            onBlur={validateEmailHandler}
           />
           <label htmlFor="emailField">Email Address</label>
         </div>
