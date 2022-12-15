@@ -14,23 +14,25 @@ const initialState = {
   loading: false,
 };
 
-// const initialState = {
-//   username: "un",
-//   password: "pw",
-//   firstName: "fn",
-//   lastName: "lm",
-//   email: "email@email.com",
-//   phone: "000-000-0000",
-// };
-
 const userSlice = createSlice({
   name: "user",
   initialState,
   extraReducers: {
+    [createUserThunk.pending]: (state) => {
+      state.loading = true;
+    },
+    [createUserThunk.rejected]: (state) => {
+      state.loading = false;
+    },
     [createUserThunk.fulfilled]: (state, action) => {
       state.user = action.payload;
     },
-
+    [loginThunk.pending]: (state) => {
+      state.loading = true;
+    },
+    [loginThunk.rejected]: (state) => {
+      state.loading = false;
+    },
     [loginThunk.fulfilled]: (state, action) => {
       state.user = action.payload;
     },
