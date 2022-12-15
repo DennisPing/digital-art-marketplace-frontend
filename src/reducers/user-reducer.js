@@ -3,7 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createUserThunk, loginThunk } from "../services/users/user-thunks";
 
 const initialState = {
-  user: {},
+  user: {
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  },
   loading: false,
 };
 

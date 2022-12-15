@@ -1,14 +1,23 @@
 .register-button {
-    background-color: dodgerblue;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
-    bottom: 23px;
-    right: 28px;
-    width: 100px;
-    height: 50px;
-    border-radius: 8px;
-    margin: 5px;
+  background-color: dodgerblue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  bottom: 23px;
+  right: 28px;
+  width: 100px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.wd-visibility {
+  right: 1rem;
+  top: 1rem;
+}
+
+.wd-register-btn {
+  text-align: center;
 }
