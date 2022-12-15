@@ -50,7 +50,7 @@ const NavbarComponent = () => {
               Explore
             </Link>
             <Link
-              to="/product"
+              to="/login"
               className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "login" ? "active" : ""}`}
             >
               Log In
