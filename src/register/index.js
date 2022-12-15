@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createUserThunk } from "../services/users/user-thunks";
 
 import "./index.css";
@@ -31,33 +31,47 @@ const ValidateEmail = (email) => {
 };
 
 const RegisterComponent = () => {
-  // First, hold the profile data from the state
-  const { user } = useSelector((state) => state.user);
-  // Then, modify the currProfile object
-  const [currUser, setUser] = useState(user); // hook
+  let user = {
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  };
+  const [newUser, setUser] = useState(user); // hook
 
   const dispatch = useDispatch();
-  const updateProfileHandler = () => {
-    // Check if currUser has all 6 fields filled out
+  const registerHandler = async () => {
+    // Check if newUser has all 6 fields filled out
     if (
-      !currUser.username ||
-      !currUser.password ||
-      !currUser.firstName ||
-      !currUser.lastName ||
-      !currUser.email ||
-      !currUser.phone
+      !newUser.username ||
+      !newUser.password ||
+      !newUser.firstName ||
+      !newUser.lastName ||
+      !newUser.email ||
+      !newUser.phone
     ) {
       alert("Please fill out all fields.");
       return;
     }
-    dispatch(createUserThunk(currUser));
+    try {
+      await dispatch(createUserThunk(newUser)).unwrap();
+      setSuccess(true);
+      // Wait 4 seconds before redirecting to /login
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 4000);
+    } catch {
+      setSuccess(false);
+    }
   };
 
-  // Validate email inside currUser
+  // Validate email inside newUser
   const [emailValid, setEmailValid] = useState(true);
   const validateEmailHandler = () => {
-    if (currUser.email.length > 0) {
-      setEmailValid(ValidateEmail(currUser.email));
+    if (newUser.email.length > 0) {
+      setEmailValid(ValidateEmail(newUser.email));
     } else {
       setEmailValid(true);
     }
@@ -69,19 +83,32 @@ const RegisterComponent = () => {
     setShowPassword(!showPassword);
   };
 
+  // Success message
+  const [success, setSuccess] = useState(null);
+
   return (
     <>
       <h1 className="fw-bold text-center py-4">Register</h1>
       <div className="list-group-item w-25 m-auto">
+        {success === true && (
+          <div className="alert alert-success text-center">
+            <p className="m-0">
+              Succesfully registered
+              <br />
+              Redirecting to log in page...
+            </p>
+          </div>
+        )}
+        {success === false && <div className="alert alert-danger text-center">Username already exists</div>}
         <div className="form-floating">
           <input
             type="text"
             className="form-control"
             id="usernameField"
             placeholder="Username"
-            value={currUser.username}
+            value={newUser.username}
             maxLength={64}
-            onChange={(e) => setUser({ ...currUser, username: e.target.value })}
+            onChange={(e) => setUser({ ...newUser, username: e.target.value })}
           />
           <label htmlFor="usernameField">Username</label>
         </div>
@@ -89,16 +116,16 @@ const RegisterComponent = () => {
           <input
             type={showPassword ? "text" : "password"}
             className="form-control position-relative"
-            id="passwordField1"
+            id="passwordField"
             placeholder="Password"
-            value={currUser.password}
+            value={newUser.password}
             maxLength={64}
-            onChange={(e) => setUser({ ...currUser, password: e.target.value })}
+            onChange={(e) => setUser({ ...newUser, password: e.target.value })}
           />
-          <label htmlFor="passwordField1">Password</label>
+          <label htmlFor="passwordField">Password</label>
           <i
             type="button"
-            class={`${
+            className={`${
               showPassword ? "bx bxs-show" : "bx bxs-hide"
             } text-secondary bx-sm position-absolute wd-visibility`}
             onClick={handlePasswordToggle}
@@ -110,9 +137,9 @@ const RegisterComponent = () => {
             className="form-control"
             id="firstNameField"
             placeholder="First Name"
-            value={currUser.firstName}
+            value={newUser.firstName}
             maxLength={64}
-            onChange={(e) => setUser({ ...currUser, firstName: e.target.value })}
+            onChange={(e) => setUser({ ...newUser, firstName: e.target.value })}
           />
           <label htmlFor="firstNameField">First Name</label>
         </div>
@@ -122,9 +149,9 @@ const RegisterComponent = () => {
             className="form-control"
             id="lastNameField"
             placeholder="Last Name"
-            value={currUser.lastName}
+            value={newUser.lastName}
             maxLength={64}
-            onChange={(e) => setUser({ ...currUser, lastName: e.target.value })}
+            onChange={(e) => setUser({ ...newUser, lastName: e.target.value })}
           />
           <label htmlFor="lastNameField">Last Name</label>
         </div>
@@ -134,10 +161,10 @@ const RegisterComponent = () => {
             className={`form-control ${emailValid ? "" : "is-invalid"}`}
             id="emailField"
             placeholder="Email Address"
-            value={currUser.email}
+            value={newUser.email}
             maxLength={64}
             onChange={(e) => {
-              setUser({ ...currUser, email: e.target.value });
+              setUser({ ...newUser, email: e.target.value });
             }}
             onBlur={validateEmailHandler}
           />
@@ -149,14 +176,14 @@ const RegisterComponent = () => {
             className="form-control"
             id="phoneField"
             placeholder="Phone Number"
-            value={currUser.phone}
+            value={newUser.phone}
             maxLength={64}
-            onChange={(e) => setUser({ ...currUser, phone: FormatPhoneNumber(e.target.value) })}
+            onChange={(e) => setUser({ ...newUser, phone: FormatPhoneNumber(e.target.value) })}
           />
           <label htmlFor="phoneField">Phone Number</label>
         </div>
         <div className="wd-register-btn py-4">
-          <button className="btn btn-primary btn-lg rounded-pill" onClick={updateProfileHandler}>
+          <button className="btn btn-primary btn-lg rounded-pill" onClick={registerHandler}>
             Register
           </button>
         </div>
