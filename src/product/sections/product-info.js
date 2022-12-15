@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
 import { getProductTransactionThunk } from "../../services/product/product-thunk";
+import { addToCart } from "../../reducers/cart-reducer";
 import "../index.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 // import ReactTooltip from "react-tooltip";
@@ -11,10 +12,22 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const ProductInfo = ({ product }) => {
   const { contractAddress, tokenId } = useParams();
   const { transaction } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductTransactionThunk({ contractAddress, tokenId }));
   }, [dispatch, contractAddress, tokenId]);
+
+  const addToCartHandler = () => {
+    const cartItem = {
+      contractAddress: contractAddress,
+      tokenId: tokenId,
+      name: product.name,
+      image: product.image,
+      price: transaction.priceUsd,
+    };
+    dispatch(addToCart({ ...cartItem, quantity: 1 }));
+  };
 
   return (
     <div>
@@ -64,10 +77,19 @@ const ProductInfo = ({ product }) => {
           <div className="mb-3 text-secondary">Current price</div>
           <div className="mb-4 me-3 h2">{`$${transaction.priceUsd}`}</div>
           <div className="d-flex">
-            <button type="button" className="btn btn-wide btn-primary btn-lg">
-              {/*onClick={()=>(addToCart())}>*/} Add to cart
+            <button
+              type="button"
+              className="btn btn-wide btn-primary btn-lg"
+              disabled={`${user ? "" : "disabled"}`}
+              onClick={addToCartHandler}
+            >
+              Add to cart
             </button>
-            <button type="button" className="mx-3 btn btn-wide btn-primary btn-lg">
+            <button
+              type="button"
+              className="mx-3 btn btn-wide btn-primary btn-lg"
+              disabled={`${user ? "" : "disabled"}`}
+            >
               Buy now <i className="bi bi-lightning-charge" />
             </button>
           </div>
