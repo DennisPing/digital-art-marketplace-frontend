@@ -9,7 +9,7 @@ const initialState = {
 };
 
 const productSlice = createSlice({
-  name: "products",
+  name: "product",
   initialState,
   extraReducers: {
     [getProductThunk.pending]: (state) => {
