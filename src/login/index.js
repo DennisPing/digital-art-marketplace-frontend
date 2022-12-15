@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginThunk } from "../services/users/user-thunks";
@@ -11,6 +11,7 @@ const LoginComponent = () => {
   const [user, setUser] = useState(userInfo); // hook
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const loginHandler = async () => {
     if (!user.username || !user.password) {
       alert("Please fill out all fields.");
@@ -20,8 +21,9 @@ const LoginComponent = () => {
       await dispatch(loginThunk(user)).unwrap();
       setSuccess(true);
       // Wait 3 seconds before redirecting to /home
+      // Tutorial: https://refine.dev/blog/usenavigate-react-router-redirect/
       setTimeout(() => {
-        window.location.href = "/home";
+        navigate("/home");
       }, 3000);
     } catch {
       setSuccess(false);

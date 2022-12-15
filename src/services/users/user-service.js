@@ -9,6 +9,11 @@ export const createUser = async (user) => {
   return response.data;
 };
 
+export const updateUser = async (user) => {
+  const response = await axios.put(`${USERS_API}/${user._id}`, user);
+  return response.data;
+};
+
 // login user
 export const login = async (user) => {
   const response = await axios.post(`${USERS_API}/login`, user);
