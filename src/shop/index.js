@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 
 import ShopGrid from "./shop-grid";
 import { getShopThunk } from "../services/shop/shop-thunk";
-// import { getCollectionsThunk } from "../services/collections/collections-thunk";
 
 const ShopComponent = () => {
   const { encodedName } = useParams();
