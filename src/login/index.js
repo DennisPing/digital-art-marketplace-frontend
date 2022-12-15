@@ -11,6 +11,8 @@ const LoginComponent = () => {
 
 
 
+    let loggedIn = false
+
     const userInfo = {username: "", password: ""}
 
     const userInfoHandler =()=>{
@@ -32,6 +34,8 @@ const LoginComponent = () => {
 
 
         dispatch(loginThunk(user))
+
+        loggedIn = true
 
 
     }
