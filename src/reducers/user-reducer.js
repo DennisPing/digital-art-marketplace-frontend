@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {createUserThunk, loginThunk} from "../services/users/user-thunks"
 
-const user = {
+const initialState = {
 
     username: "un",
     password: "pw",
@@ -16,7 +16,7 @@ const user = {
 const userSlice = createSlice({
 
         name: "user",
-        user,
+        initialState,
 
         extraReducers: {
 

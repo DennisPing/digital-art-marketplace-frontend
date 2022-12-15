@@ -13,6 +13,6 @@ export const create = async (user) => {
 // login user
 export const login = async (user) => {
     const response = await axios
-        .post(`${USERS_API}`, user);
+        .post(`${USERS_API}/login`, user);
     return response.data;
 }
