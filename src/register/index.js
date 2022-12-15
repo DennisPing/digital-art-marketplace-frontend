@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUserThunk } from "../services/users/user-thunks";
@@ -42,6 +42,7 @@ const RegisterComponent = () => {
   const [newUser, setUser] = useState(user); // hook
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const registerHandler = async () => {
     // Check if newUser has all 6 fields filled out
     if (
@@ -58,10 +59,10 @@ const RegisterComponent = () => {
     try {
       await dispatch(createUserThunk(newUser)).unwrap();
       setSuccess(true);
-      // Wait 4 seconds before redirecting to /login
+      // Wait 3 seconds before redirecting to /login
       setTimeout(() => {
-        window.location.href = "/login";
-      }, 4000);
+        navigate("/login");
+      }, 3000);
     } catch {
       setSuccess(false);
     }

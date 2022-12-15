@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../reducers/user-reducer";
 
 import "./navbar.css";
 
@@ -7,6 +9,15 @@ const NavbarComponent = () => {
   const { pathname } = useLocation();
   const paths = pathname.split("/");
   const active = paths[1];
+
+  const { user } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logoutHandler = async () => {
+    await dispatch(logout());
+    navigate("/home");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -49,37 +60,43 @@ const NavbarComponent = () => {
             >
               Explore
             </Link>
-            <Link
-              to="/login"
-              className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "login" ? "active" : ""}`}
-            >
-              Log In
-            </Link>
-            <li className="nav-item nav-btn-hover rounded-3 dropdown mx-2">
-              <a
-                className="nav-link dropdown-toggle"
-                href="/#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            {user ? (
+              // If the user is logged in, show the profile button
+              <li className="nav-item nav-btn-hover rounded-3 dropdown mx-2">
+                <a
+                  className="nav-link dropdown-toggle text-primary"
+                  href="/#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Profile
+                </a>
+                <ul className="dropdown-menu">
+                  <Link to="/profile" className="dropdown-item">
+                    My Profile
+                  </Link>
+                  <Link to="#" className="dropdown-item">
+                    My Collections
+                  </Link>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <Link to="#" className="dropdown-item" onClick={logoutHandler}>
+                    Log Out
+                  </Link>
+                </ul>
+              </li>
+            ) : (
+              // Else, if the user is not logged in, show the login button
+              <Link
+                to="/login"
+                className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "login" ? "active" : ""}`}
               >
-                Profile
-              </a>
-              <ul className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">
-                  My Profile
-                </Link>
-                <Link to="#" className="dropdown-item">
-                  My Collections
-                </Link>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <Link to="#" className="dropdown-item">
-                  Log Out
-                </Link>
-              </ul>
-            </li>
+                Log In
+              </Link>
+            )}
+
             {/* <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-2 ${active === "profile" ? "active" : ""}`}>
               <i className="bx bx-user bx-sm align-middle"></i>
             </Link> */}

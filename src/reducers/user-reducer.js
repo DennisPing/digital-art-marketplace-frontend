@@ -1,16 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { createUserThunk, loginThunk } from "../services/users/user-thunks";
+import { createUserThunk, updateUserThunk, loginThunk } from "../services/users/user-thunks";
 
 const initialState = {
-  user: {
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  },
+  user: null,
   loading: false,
 };
 
@@ -24,7 +17,18 @@ const userSlice = createSlice({
     [createUserThunk.rejected]: (state) => {
       state.loading = false;
     },
-    [createUserThunk.fulfilled]: (state, action) => {
+    // After you register you still need to manually log in
+    [createUserThunk.fulfilled]: (state) => {
+      state.loading = false;
+    },
+    [updateUserThunk.pending]: (state) => {
+      state.loading = true;
+    },
+    [updateUserThunk.rejected]: (state) => {
+      state.loading = false;
+    },
+    [updateUserThunk.fulfilled]: (state, action) => {
+      state.loading = false;
       state.user = action.payload;
     },
     [loginThunk.pending]: (state) => {
@@ -37,6 +41,12 @@ const userSlice = createSlice({
       state.user = action.payload;
     },
   },
+  reducers: {
+    logout: (state) => {
+      state.user = null;
+    },
+  },
 });
 
 export default userSlice.reducer;
+export const { logout } = userSlice.actions;
