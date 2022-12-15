@@ -88,112 +88,114 @@ const RegisterComponent = () => {
   const [success, setSuccess] = useState(null);
 
   return (
-    <>
-      <h1 className="fw-bold text-center py-4">Register</h1>
-      <div className="list-group-item w-25 m-auto">
-        {success === true && (
-          <div className="alert alert-success text-center">
-            <p className="m-0">
-              Succesfully registered
-              <br />
-              Redirecting to log in page...
-            </p>
+    <div className="row">
+      <div className="col-10 col-sm-10 col-md-8 col-lg-4 col-xl-4 mx-auto">
+        <h1 className="fw-bold text-center py-4">Register</h1>
+        <div className="list-group-item">
+          {success === true && (
+            <div className="alert alert-success text-center">
+              <p className="m-0">
+                Succesfully registered
+                <br />
+                Redirecting to log in page...
+              </p>
+            </div>
+          )}
+          {success === false && <div className="alert alert-danger text-center">Username already exists</div>}
+          <div className="form-floating">
+            <input
+              type="text"
+              className="form-control"
+              id="usernameField"
+              placeholder="Username"
+              value={newUser.username}
+              maxLength={64}
+              onChange={(e) => setUser({ ...newUser, username: e.target.value })}
+            />
+            <label htmlFor="usernameField">Username</label>
           </div>
-        )}
-        {success === false && <div className="alert alert-danger text-center">Username already exists</div>}
-        <div className="form-floating">
-          <input
-            type="text"
-            className="form-control"
-            id="usernameField"
-            placeholder="Username"
-            value={newUser.username}
-            maxLength={64}
-            onChange={(e) => setUser({ ...newUser, username: e.target.value })}
-          />
-          <label htmlFor="usernameField">Username</label>
+          <div className="form-floating my-3">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="form-control position-relative"
+              id="passwordField"
+              placeholder="Password"
+              value={newUser.password}
+              maxLength={64}
+              onChange={(e) => setUser({ ...newUser, password: e.target.value })}
+            />
+            <label htmlFor="passwordField">Password</label>
+            <i
+              type="button"
+              className={`${
+                showPassword ? "bx bxs-show" : "bx bxs-hide"
+              } text-secondary bx-sm position-absolute wd-visibility`}
+              onClick={handlePasswordToggle}
+            />
+          </div>
+          <div className="form-floating my-3">
+            <input
+              type="text"
+              className="form-control"
+              id="firstNameField"
+              placeholder="First Name"
+              value={newUser.firstName}
+              maxLength={64}
+              onChange={(e) => setUser({ ...newUser, firstName: e.target.value })}
+            />
+            <label htmlFor="firstNameField">First Name</label>
+          </div>
+          <div className="form-floating my-3">
+            <input
+              type="text"
+              className="form-control"
+              id="lastNameField"
+              placeholder="Last Name"
+              value={newUser.lastName}
+              maxLength={64}
+              onChange={(e) => setUser({ ...newUser, lastName: e.target.value })}
+            />
+            <label htmlFor="lastNameField">Last Name</label>
+          </div>
+          <div className="form-floating my-3">
+            <input
+              type="email"
+              className={`form-control ${emailValid ? "" : "is-invalid"}`}
+              id="emailField"
+              placeholder="Email Address"
+              value={newUser.email}
+              maxLength={64}
+              onChange={(e) => {
+                setUser({ ...newUser, email: e.target.value });
+              }}
+              onBlur={validateEmailHandler}
+            />
+            <label htmlFor="emailField">Email Address</label>
+          </div>
+          <div className="form-floating">
+            <input
+              type="text"
+              className="form-control"
+              id="phoneField"
+              placeholder="Phone Number"
+              value={newUser.phone}
+              maxLength={64}
+              onChange={(e) => setUser({ ...newUser, phone: FormatPhoneNumber(e.target.value) })}
+            />
+            <label htmlFor="phoneField">Phone Number</label>
+          </div>
+          <div className="wd-register-btn py-4">
+            <button className="btn btn-primary btn-lg rounded-pill" onClick={registerHandler}>
+              Register
+            </button>
+          </div>
         </div>
-        <div className="form-floating my-3">
-          <input
-            type={showPassword ? "text" : "password"}
-            className="form-control position-relative"
-            id="passwordField"
-            placeholder="Password"
-            value={newUser.password}
-            maxLength={64}
-            onChange={(e) => setUser({ ...newUser, password: e.target.value })}
-          />
-          <label htmlFor="passwordField">Password</label>
-          <i
-            type="button"
-            className={`${
-              showPassword ? "bx bxs-show" : "bx bxs-hide"
-            } text-secondary bx-sm position-absolute wd-visibility`}
-            onClick={handlePasswordToggle}
-          />
-        </div>
-        <div className="form-floating my-3">
-          <input
-            type="text"
-            className="form-control"
-            id="firstNameField"
-            placeholder="First Name"
-            value={newUser.firstName}
-            maxLength={64}
-            onChange={(e) => setUser({ ...newUser, firstName: e.target.value })}
-          />
-          <label htmlFor="firstNameField">First Name</label>
-        </div>
-        <div className="form-floating my-3">
-          <input
-            type="text"
-            className="form-control"
-            id="lastNameField"
-            placeholder="Last Name"
-            value={newUser.lastName}
-            maxLength={64}
-            onChange={(e) => setUser({ ...newUser, lastName: e.target.value })}
-          />
-          <label htmlFor="lastNameField">Last Name</label>
-        </div>
-        <div className="form-floating my-3">
-          <input
-            type="email"
-            className={`form-control ${emailValid ? "" : "is-invalid"}`}
-            id="emailField"
-            placeholder="Email Address"
-            value={newUser.email}
-            maxLength={64}
-            onChange={(e) => {
-              setUser({ ...newUser, email: e.target.value });
-            }}
-            onBlur={validateEmailHandler}
-          />
-          <label htmlFor="emailField">Email Address</label>
-        </div>
-        <div className="form-floating">
-          <input
-            type="text"
-            className="form-control"
-            id="phoneField"
-            placeholder="Phone Number"
-            value={newUser.phone}
-            maxLength={64}
-            onChange={(e) => setUser({ ...newUser, phone: FormatPhoneNumber(e.target.value) })}
-          />
-          <label htmlFor="phoneField">Phone Number</label>
-        </div>
-        <div className="wd-register-btn py-4">
-          <button className="btn btn-primary btn-lg rounded-pill" onClick={registerHandler}>
-            Register
-          </button>
-        </div>
-      </div>
 
-      <h6 className="text-center">
-        Already have an account? <Link to={"/login"}>Login here</Link>{" "}
-      </h6>
-    </>
+        <h6 className="text-center">
+          Already have an account? <Link to={"/login"}>Login here</Link>{" "}
+        </h6>
+      </div>
+    </div>
   );
 };
 
