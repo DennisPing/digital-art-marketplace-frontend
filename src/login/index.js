@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { loginThunk } from "../services/users/user-thunks";
 
 const LoginComponent = () => {
-  let loggedIn = false;
+  // let loggedIn = false;
 
   const userInfo = { username: "", password: "" };
 
@@ -21,7 +21,7 @@ const LoginComponent = () => {
   const loginHandler = (user) => {
     dispatch(loginThunk(user));
 
-    loggedIn = true;
+    // loggedIn = true;
   };
 
   return (
