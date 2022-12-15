@@ -3,8 +3,9 @@ import { getProductThunk, getProductTransactionThunk } from "../services/product
 
 const initialState = {
   product: {},
-  transactions: [],
+  transaction: {},
   loading: false,
+  txLoading: false,
 };
 
 const productSlice = createSlice({
@@ -23,15 +24,15 @@ const productSlice = createSlice({
       state.loading = false;
     },
     [getProductTransactionThunk.pending]: (state) => {
-      state.loading = false;
-      state.transactions = [];
+      state.txLoading = true;
+      state.transaction = {};
     },
     [getProductTransactionThunk.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.transactions = payload;
+      state.txLoading = false;
+      state.transaction = payload;
     },
     [getProductTransactionThunk.rejected]: (state) => {
-      state.loading = false;
+      state.txLoading = false;
     },
   },
 });
