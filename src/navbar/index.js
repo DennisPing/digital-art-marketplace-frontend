@@ -50,8 +50,8 @@ const NavbarComponent = () => {
               Explore
             </Link>
             <Link
-              to="/product"
-              className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "product" ? "active" : ""}`}
+              to="/login"
+              className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "login" ? "active" : ""}`}
             >
               Log In
             </Link>
@@ -66,7 +66,7 @@ const NavbarComponent = () => {
                 Profile
               </a>
               <ul className="dropdown-menu">
-                <Link to="#" className="dropdown-item">
+                <Link to="/profile" className="dropdown-item">
                   My Profile
                 </Link>
                 <Link to="#" className="dropdown-item">
