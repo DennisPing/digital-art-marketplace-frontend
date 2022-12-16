@@ -6,7 +6,7 @@ const api = axios.create({
   withCredentials: true,
 });
 
-export const getPurchases = async (credentials) => {
+export const getPurchases = async () => {
   const response = await api.get(`${PURCHASE_API}`);
   return response.data;
 };

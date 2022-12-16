@@ -80,6 +80,14 @@ const NavbarComponent = () => {
             >
               Explore
             </Link>
+            {user && user.userType === "admin" && (
+              <Link
+                to="/admin"
+                className={`nav-link nav-btn-hover fw-semibold rounded-3 mx-2 ${active === "admin" ? "active" : ""}`}
+              >
+                Admin
+              </Link>
+            )}
             {user ? (
               // If the user is logged in, show the profile button
               <li className="nav-item nav-btn-hover rounded-3 dropdown mx-2">
