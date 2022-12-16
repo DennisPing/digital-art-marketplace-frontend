@@ -59,10 +59,10 @@ const RegisterComponent = () => {
     try {
       await dispatch(createUserThunk(newUser)).unwrap();
       setSuccess(true);
-      // Wait 3 seconds before redirecting to /login
+      // Wait 2 seconds before redirecting to /login
       setTimeout(() => {
         navigate("/login");
-      }, 3000);
+      }, 2000);
     } catch {
       setSuccess(false);
     }

@@ -20,11 +20,11 @@ const LoginComponent = () => {
     try {
       await dispatch(loginThunk(user)).unwrap();
       setSuccess(true);
-      // Wait 3 seconds before redirecting to /home
+      // Wait 2 seconds before redirecting to /home
       // Tutorial: https://refine.dev/blog/usenavigate-react-router-redirect/
       setTimeout(() => {
         navigate("/home");
-      }, 3000);
+      }, 2000);
     } catch {
       setSuccess(false);
     }

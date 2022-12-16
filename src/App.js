@@ -19,6 +19,7 @@ import cartReducer from "./reducers/cart-reducer";
 import userReducer from "./reducers/user-reducer";
 import LoginComponent from "./login";
 import RegisterComponent from "./register";
+import DeleteComponent from "./profile/delete";
 
 const store = configureStore({
   reducer: {
@@ -47,6 +48,7 @@ function App() {
             <Route path="checkout" element={<CheckoutComponent />} />
             <Route path="login" element={<LoginComponent />} />
             <Route path="register" element={<RegisterComponent />} />
+            <Route path="profile/delete" element={<DeleteComponent />} />
           </Routes>
 
           <div className="d-inline-flex">

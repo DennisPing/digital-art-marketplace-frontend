@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../reducers/user-reducer";
@@ -13,10 +13,9 @@ const NavbarComponent = () => {
   const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const logoutHandler = async () => {
     await dispatch(logout());
-    navigate("/home");
+    window.location.href = "/home";
   };
 
   return (
@@ -45,8 +44,8 @@ const NavbarComponent = () => {
             <input
               className="form-control form-control-lg mx-0 mx-lg-2 rounded-pill"
               type="search"
-              placeholder="Search"
-              aria-label="Search"
+              placeholder="Search collections"
+              aria-label="Search collections"
             />
           </div>
         </form>
@@ -56,7 +55,7 @@ const NavbarComponent = () => {
           <ul className="navbar-nav mb-2 mb-lg-0">
             <Link
               to="/explore"
-              className={`nav-link nav-btn-hover rounded-3 mx-2 ${active === "explore" ? "active" : ""}`}
+              className={`nav-link nav-btn-hover fw-semibold rounded-3 mx-2 ${active === "explore" ? "active" : ""}`}
             >
               Explore
             </Link>
@@ -64,7 +63,7 @@ const NavbarComponent = () => {
               // If the user is logged in, show the profile button
               <li className="nav-item nav-btn-hover rounded-3 dropdown mx-2">
                 <a
-                  className="nav-link dropdown-toggle text-primary"
+                  className="nav-link dropdown-toggle fw-semibold text-primary"
                   href="/#"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -91,7 +90,9 @@ const NavbarComponent = () => {
               // Else, if the user is not logged in, show the login button
               <Link
                 to="/login"
-                className={`nav-link nav-btn-hover rounded-3 text-nowrap mx-2 ${active === "login" ? "active" : ""}`}
+                className={`nav-link nav-btn-hover rounded-3 fw-semibold text-nowrap mx-2 ${
+                  active === "login" ? "active" : ""
+                }`}
               >
                 Log In
               </Link>

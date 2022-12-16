@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ReactTooltip from "react-tooltip";
+
 import { updateUserThunk } from "../services/users/user-thunks";
 
 import "./index.css";
@@ -34,6 +36,22 @@ const Capitalize = (name) => {
   return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
+const AlertComponent = ({ success, message }) => {
+  let alertStyle = "";
+  if (success === true) {
+    alertStyle = "alert alert-success text-center";
+  } else {
+    alertStyle = "alert alert-danger text-center";
+  }
+  return (
+    <>
+      <div className={alertStyle}>
+        <p className="m-0">{message}</p>
+      </div>
+    </>
+  );
+};
+
 const ProfileComponent = () => {
   const { user } = useSelector((state) => state.user);
   const [newUser, setUser] = useState(user); // hook
@@ -60,6 +78,30 @@ const ProfileComponent = () => {
     }
   };
 
+  const [subscribed, setSubscribed] = useState(null);
+  const subscribePremiumHandler = async () => {
+    try {
+      await dispatch(updateUserThunk({ ...user, userType: "premium" })).unwrap();
+      setSubscribed(true);
+    } catch {
+      setSubscribed(false);
+    }
+  };
+
+  const unsubscribePremiumHandler = async () => {
+    try {
+      await dispatch(updateUserThunk({ ...user, userType: "free" })).unwrap();
+      setSubscribed(false);
+    } catch {
+      setSubscribed(true);
+    }
+  };
+
+  const navigate = useNavigate();
+  const deleteUserHandler = () => {
+    navigate("/profile/delete");
+  };
+
   // Validate email inside newUser
   const [emailValid, setEmailValid] = useState(true);
   const validateEmailHandler = () => {
@@ -82,14 +124,30 @@ const ProfileComponent = () => {
   return (
     <div className="row">
       <div className="col-10 col-sm-10 col-md-8 col-lg-4 col-xl-4 mx-auto">
-        <h1 className="fw-bold text-center py-4">{`Hello ${Capitalize(user.firstName)}`}</h1>
-        <div className="list-group-item">
-          {success === true && (
-            <div className="alert alert-success text-center">
-              <p className="m-0">Succesfully updated profile</p>
-            </div>
+        <div className="d-flex justify-content-center align-items-center">
+          <h1 className="fw-bold d-inline-block py-4">{`Hello ${Capitalize(user.firstName)}`}</h1>
+          {user.userType === "premium" ? (
+            <i className="bx bx-lg bx-badge-check text-primary ms-2" data-tip data-for="premiumIcon" />
+          ) : (
+            ""
           )}
-          {success === false && <div className="alert alert-danger text-center">Unable to update profile</div>}
+          {user.userType === "admin" ? (
+            <i className="bx bx-lg bx-crown text-primary ms-2" data-tip data-for="adminIcon" />
+          ) : (
+            ""
+          )}
+          <ReactTooltip id="premiumIcon" place="top">
+            Premium User
+          </ReactTooltip>
+          <ReactTooltip id="adminIcon" place="top">
+            Admin User
+          </ReactTooltip>
+        </div>
+        <div className="list-group-item">
+          {success === true && <AlertComponent success={success} message="Profile updated successfully" />}
+          {success === false && <AlertComponent success={success} message="Unable to update profile" />}
+          {subscribed === true && <AlertComponent success={subscribed} message="Subscribed to premium" />}
+          {subscribed === false && <AlertComponent success={subscribed} message="Unsubscribed from premium" />}
           <div className="form-floating">
             <input
               type="text"
@@ -174,14 +232,34 @@ const ProfileComponent = () => {
           </div>
           <div className="wd-register-btn py-4">
             <button className="btn btn-primary btn-lg rounded-pill" onClick={updateUserHandler}>
-              Register
+              Update Profile
+            </button>
+          </div>
+
+          <h1 className="fw-bold text-center pt-3 border-top">Premium Membership</h1>
+          <h5 className="text-secondary text-center">Get exclusive access to VIP art collections</h5>
+          {subscribed === false || subscribed === null ? (
+            <div className="wd-register-btn py-4">
+              <button className="btn btn-success btn-lg rounded-pill" onClick={subscribePremiumHandler}>
+                Subscribe to Premium
+              </button>
+            </div>
+          ) : (
+            <div className="wd-register-btn py-4">
+              <button className="btn btn-warning btn-lg rounded-pill" onClick={unsubscribePremiumHandler}>
+                Unsubscribe from Premium
+              </button>
+            </div>
+          )}
+
+          <h1 className="fw-bold text-center pt-3 border-top">Delete Account</h1>
+          <h5 className="text-secondary text-center">Delete your account and all your data</h5>
+          <div className="wd-register-btn py-4">
+            <button className="btn btn-danger btn-lg rounded-pill" onClick={deleteUserHandler}>
+              Delete Account
             </button>
           </div>
         </div>
-
-        <h6 className="text-center">
-          Already have an account? <Link to={"/login"}>Login here</Link>{" "}
-        </h6>
       </div>
     </div>
   );
