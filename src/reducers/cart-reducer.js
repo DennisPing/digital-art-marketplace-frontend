@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { createPurchaseThunk } from "../services/purchases/purchase-thunk";
+
 const initialState = {
   cart: [],
 };
@@ -7,6 +9,11 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,
+  extraReducers: {
+    [createPurchaseThunk.fulfilled]: (state, { payload }) => {
+      state.cart = [];
+    },
+  },
   reducers: {
     addToCart: (state, { payload }) => {
       const itemInCart = state.cart.find(

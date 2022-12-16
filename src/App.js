@@ -22,6 +22,7 @@ import LoginComponent from "./login";
 import RegisterComponent from "./register";
 import DeleteComponent from "./profile/delete";
 import ExploreSearchComponent from "./explore-search";
+import MyCollectionComponent from "./profile/mycollection";
 
 const store = configureStore({
   reducer: {
@@ -53,9 +54,10 @@ function App() {
             <Route path="register" element={<RegisterComponent />} />
             <Route path="profile/delete" element={<DeleteComponent />} />
             <Route path="explore-search" element={<ExploreSearchComponent />} />
+            <Route path="profile/mycollection" element={<MyCollectionComponent />} />
           </Routes>
 
-          <div className="d-inline-flex">
+          {/* <div className="d-inline-flex">
             <h6>Screen size debugger:&nbsp;</h6>
             <div className="d-block d-sm-none">
               <h6 className="label label-info">xs</h6>
@@ -75,7 +77,7 @@ function App() {
             <div className="d-none d-xxl-block">
               <h6 className="label label-info">xxl</h6>
             </div>
-          </div>
+          </div> */}
         </div>
       </Provider>
     </BrowserRouter>

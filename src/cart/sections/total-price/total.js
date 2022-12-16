@@ -8,6 +8,7 @@ function Total({ cart }) {
       totalQuantity += item.quantity;
       totalPrice += item.price * item.quantity;
     });
+    totalPrice = totalPrice.toFixed(2);
     return { totalPrice, totalQuantity };
   };
 

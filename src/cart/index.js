@@ -30,10 +30,10 @@ const CartComponent = () => {
         </div>
       </div>
 
-      <div className="cart__right">
+      <div className="d-flex flex-column align-items-center">
         <Total cart={cart} />
         <Link to="/checkout">
-          <button className="checkout-button text-white">Checkout</button>
+          <button className="btn btn-primary">Checkout</button>
         </Link>
       </div>
     </div>

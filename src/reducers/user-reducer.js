@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { createUserThunk, updateUserThunk, loginThunk, deleteUserThunk } from "../services/users/user-thunks";
+import { getPurchasesByUserIdThunk } from "../services/purchases/purchase-thunk";
 
 const initialState = {
   user: null,
+  mycollection: [],
   loading: false,
 };
 
@@ -45,6 +47,16 @@ const userSlice = createSlice({
     },
     [deleteUserThunk.fulfilled]: (state) => {
       state.user = null;
+    },
+    [getPurchasesByUserIdThunk.pending]: (state) => {
+      state.loading = true;
+    },
+    [getPurchasesByUserIdThunk.rejected]: (state) => {
+      state.loading = false;
+    },
+    [getPurchasesByUserIdThunk.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.mycollection = action.payload;
     },
   },
   reducers: {
