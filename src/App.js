@@ -21,6 +21,7 @@ import reviewReducer from "./reducers/review-reducer";
 import LoginComponent from "./login";
 import RegisterComponent from "./register";
 import DeleteComponent from "./profile/delete";
+import ExploreSearchComponent from "./explore-search";
 
 const store = configureStore({
   reducer: {
@@ -29,7 +30,7 @@ const store = configureStore({
     product: productReducer,
     cart: cartReducer,
     user: userReducer,
-    review: reviewReducer
+    review: reviewReducer,
   },
 });
 
@@ -51,6 +52,7 @@ function App() {
             <Route path="login" element={<LoginComponent />} />
             <Route path="register" element={<RegisterComponent />} />
             <Route path="profile/delete" element={<DeleteComponent />} />
+            <Route path="explore-search" element={<ExploreSearchComponent />} />
           </Routes>
 
           <div className="d-inline-flex">

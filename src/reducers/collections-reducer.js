@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCollectionsThunk } from "../services/collections/collections-thunk";
+import { getCollectionsThunk, searchCollectionsThunk } from "../services/collections/collections-thunk";
 
 const initialState = {
   collections: [],
@@ -12,7 +12,6 @@ const collectionsSlice = createSlice({
   extraReducers: {
     [getCollectionsThunk.pending]: (state) => {
       state.loading = true;
-      state.collections = [];
     },
     [getCollectionsThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
@@ -20,6 +19,13 @@ const collectionsSlice = createSlice({
     },
     [getCollectionsThunk.rejected]: (state) => {
       state.loading = false;
+    },
+    [searchCollectionsThunk.pending]: (state) => {
+      state.loading = true;
+    },
+    [searchCollectionsThunk.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.collections = payload;
     },
   },
 });

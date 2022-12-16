@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+
 import { logout } from "../reducers/user-reducer";
 
 import "./navbar.css";
@@ -16,6 +18,13 @@ const NavbarComponent = () => {
   const logoutHandler = async () => {
     await dispatch(logout());
     window.location.href = "/home";
+  };
+
+  // Navigate to the search result page
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const searchHandler = async () => {
+    navigate("/explore-search", { state: { search } });
   };
 
   return (
@@ -39,16 +48,19 @@ const NavbarComponent = () => {
         </button>
 
         {/* Search bar */}
-        <form className="d-flex w-100" role="search">
-          <div className="input-group">
-            <input
-              className="form-control form-control-lg mx-0 mx-lg-2 rounded-pill"
-              type="search"
-              placeholder="Search collections"
-              aria-label="Search collections"
-            />
-          </div>
-        </form>
+        <div class="d-flex input-group">
+          <input
+            type="text"
+            className="form-control form-control-lg"
+            placeholder="Search collections"
+            aria-label="Search collections"
+            aria-describedby="button-addon"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button className="btn btn-outline-primary" type="button" id="button-addon" onClick={searchHandler}>
+            Search
+          </button>
+        </div>
 
         {/* Navbar links */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -98,9 +110,6 @@ const NavbarComponent = () => {
               </Link>
             )}
 
-            {/* <Link to="/profile" className={`nav-link px-0 px-lg-2 mx-2 ${active === "profile" ? "active" : ""}`}>
-              <i className="bx bx-user bx-sm align-middle"></i>
-            </Link> */}
             <Link
               to="/cart"
               className={`nav-link nav-btn-hover rounded-3 px-0 px-lg-2 mx-2 ${active === "cart" ? "active" : ""}`}

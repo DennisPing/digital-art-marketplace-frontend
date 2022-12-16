@@ -22,15 +22,9 @@ const cartSlice = createSlice({
       const index = state.cart.findIndex(
         (item) => item.contractAddress === payload.contractAddress && item.tokenId === payload.tokenId
       );
-      console.log(index);
       if (index >= 0) {
         state.cart.splice(index, 1);
       }
-
-      // const keepItems = state.cart.filter(
-      //   (item) => item.contractAddress !== payload.contractAddress && item.tokenId !== payload.tokenId
-      // );
-      // state.cart = keepItems;
     },
   },
 });
