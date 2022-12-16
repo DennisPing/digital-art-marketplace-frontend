@@ -30,7 +30,7 @@ const ProductInfo = ({ product }) => {
   };
 
   return (
-    <div>
+    <div className="mb-3">
       {/*<div className="d-flex justify-content-between h5">*/}
       {/*  <div className="p-2 text-primary">*/}
       {/*    {product.creator} <i className="bi bi-patch-check-fill px-2"/>*/}

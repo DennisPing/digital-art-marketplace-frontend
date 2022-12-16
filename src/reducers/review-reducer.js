@@ -2,42 +2,37 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getReviewsThunk, createReviewThunk } from "../services/review/review-thunk";
 
 const initialState = {
-  review: {
-    content: "",
-    username: "",
-    contractAddress: "",
-    tokenId: ""
-  },
+  reviews: [],
   loading: false
 };
 
 const reviewSlice = createSlice({
-  name: "products",
+  name: "reviews",
   initialState,
   extraReducers: {
     [getReviewsThunk.pending]: (state) => {
       state.loading = true;
-      state.review = {};
+      state.reviews = [];
     },
     [getReviewsThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.review = payload;
+      state.reviews = payload;
     },
     [getReviewsThunk.rejected]: (state) => {
       state.loading = false;
     },
     [createReviewThunk.pending]: (state) => {
       state.loading = true;
-      state.review = {};
+      state.reviews = [];
     },
     [createReviewThunk.fulfilled]: (state, { payload }) => {
-      state.txLoading = false;
-      state.transaction = payload;
+      state.loading = false;
+      state.reviews.push(payload);
     },
     [createReviewThunk.rejected]: (state) => {
-      state.txLoading = false;
+      state.loading = false;
     },
   },
 });
 
-export default productSlice.reducer;
+export default reviewSlice.reducer;

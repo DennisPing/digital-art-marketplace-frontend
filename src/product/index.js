@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 
 import ProductImage from "./sections/product-image";
 import ProductInfo from "./sections/product-info";
+import ProductReviews from "./sections/product-reviews";
 import { getProductThunk } from "../services/product/product-thunk";
+import CreateReview from "./sections/create-review";
 
 const ProductComponent = () => {
   const { contractAddress, tokenId } = useParams();
@@ -17,7 +19,7 @@ const ProductComponent = () => {
   return (
     <>
       {loading && <div>Loading...</div>}
-
+    <div>
       <div className="row mt-5">
         <div className="col-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
           <ProductImage image={product.image} />
@@ -26,6 +28,12 @@ const ProductComponent = () => {
           <ProductInfo product={product} />
         </div>
       </div>
+      <div>
+        <h2>Reviews</h2>
+        <ProductReviews />
+        <CreateReview />
+      </div>
+    </div>
     </>
   );
 };
