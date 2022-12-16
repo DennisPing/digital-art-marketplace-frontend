@@ -33,7 +33,12 @@ const ProductComponent = () => {
         <div className="mb-3">
           <h2>Reviews</h2>
           {/* Only render create review if a user is logged in */}
-          {user && <CreateReview contractAddress={contractAddress} tokenId={tokenId} user={user} />}
+          {user && user.userType !== "free" && (
+            <CreateReview contractAddress={contractAddress} tokenId={tokenId} user={user} />
+          )}
+          {user.userType === "free" && (
+            <h5 className="pb-2 text-secondary">You must be a Premium member to write reviews</h5>
+          )}
           <ProductReviews contractAddress={contractAddress} tokenId={tokenId} />
         </div>
       </div>
