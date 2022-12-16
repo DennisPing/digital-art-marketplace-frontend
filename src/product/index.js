@@ -36,7 +36,7 @@ const ProductComponent = () => {
           {user && user.userType !== "free" && (
             <CreateReview contractAddress={contractAddress} tokenId={tokenId} user={user} />
           )}
-          {user.userType === "free" && (
+          {user && user.userType === "free" && (
             <h5 className="pb-2 text-secondary">You must be a Premium member to write reviews</h5>
           )}
           <ProductReviews contractAddress={contractAddress} tokenId={tokenId} />
