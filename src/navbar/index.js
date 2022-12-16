@@ -24,11 +24,13 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const searchHandler = async () => {
-    navigate("/explore-search", { state: { search } });
+    if (search !== "") {
+      navigate("/explore-search", { state: { search } });
+    }
   };
 
   const enterKeyHandler = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && search !== "") {
       navigate("/explore-search", { state: { search } });
     }
   };
@@ -42,7 +44,7 @@ const NavbarComponent = () => {
 
         {/* Hamburger menu */}
         <button
-          className="navbar-toggler mb-3"
+          className="navbar-toggler mb-3 me-2"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -54,7 +56,7 @@ const NavbarComponent = () => {
         </button>
 
         {/* Search bar */}
-        <div className="d-flex input-group">
+        <div className="d-flex input-group me-2">
           <input
             type="text"
             className="form-control form-control-lg"
@@ -94,13 +96,13 @@ const NavbarComponent = () => {
                   <Link to="/profile" className="dropdown-item">
                     My Profile
                   </Link>
-                  <Link to="#" className="dropdown-item">
+                  <Link to="/profile/mycollection" className="dropdown-item">
                     My Collections
                   </Link>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
-                  <Link to="#" className="dropdown-item" onClick={logoutHandler}>
+                  <Link className="dropdown-item" onClick={logoutHandler}>
                     Log Out
                   </Link>
                 </ul>

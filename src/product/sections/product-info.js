@@ -57,7 +57,7 @@ const ProductInfo = ({ product, contractAddress, tokenId, user }) => {
       {/*</div>*/}
       <div className="h2 mb-3">{product.name}</div>
 
-      <div className="border offer-border">
+      <div className="border offer-border rounded-4">
         <div className="px-3 py-3 border-bottom">
           <div className="mb-3 text-secondary">Description</div>
           <ReactMarkdown className="fw-600">{product.description}</ReactMarkdown>
