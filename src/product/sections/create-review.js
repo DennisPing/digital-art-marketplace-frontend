@@ -1,35 +1,32 @@
 import { useDispatch } from "react-redux";
 import { createReviewThunk } from "../../services/review/review-thunk";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
-const CreateReview = () => {
-  const { contractAddress, tokenId } = useParams();
+const CreateReview = ({ contractAddress, tokenId, user }) => {
   const dispatch = useDispatch();
-  let [content, setContent] = useState("");
-  // const { user } = useSelector((state) => state.user);
+  const [content, setContent] = useState("");
 
   const reviewClickHandler = () => {
     const newReview = {
-      username: "hannahQin",
-      // TODO: set username to currently logged-in user aka dynamic username
+      username: user.username,
       content: content,
       contractAddress: contractAddress,
       tokenId: tokenId,
     };
     dispatch(createReviewThunk(newReview));
+    setContent("");
   };
 
   return (
-    <div className="mt-2">
+    <div className="d-flex align-items-center my-3">
       <textarea
         value={content}
         placeholder="Write your own review"
-        className="form-control border-0"
+        className="form-control rounded-4"
         onChange={(event) => setContent(event.target.value)}
-      ></textarea>
-      <div>
-        <button className="btn btn-primary float-end mt-2 ps-3 pe-3 fw-bold" onClick={reviewClickHandler}>
+      />
+      <div className="">
+        <button className="btn btn-primary rounded-4 ms-3 px-4 fw-bold" onClick={reviewClickHandler}>
           Post
         </button>
       </div>

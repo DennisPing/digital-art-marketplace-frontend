@@ -2,11 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as service from "./review-service";
 
 export const getReviewsThunk = createAsyncThunk(
-    "review/getReview",
-    async ({ contractAddress, tokenId }) => await service.getReviews(contractAddress, tokenId)
+  "review/getReview",
+  async (credentials) => await service.getReviews(credentials)
 );
 
 export const createReviewThunk = createAsyncThunk(
-    "review/createReview",
-    async ({ contractAddress, tokenId, review }) => await service.createReview(contractAddress, tokenId, review)
+  "review/createReview",
+  async (review) => await service.createReview(review)
 );

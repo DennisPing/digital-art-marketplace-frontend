@@ -3,7 +3,7 @@ import { getReviewsThunk, createReviewThunk } from "../services/review/review-th
 
 const initialState = {
   reviews: [],
-  loading: false
+  loading: false,
 };
 
 const reviewSlice = createSlice({
@@ -23,7 +23,6 @@ const reviewSlice = createSlice({
     },
     [createReviewThunk.pending]: (state) => {
       state.loading = true;
-      state.reviews = [];
     },
     [createReviewThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
