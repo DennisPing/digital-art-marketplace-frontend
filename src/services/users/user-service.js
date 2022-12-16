@@ -19,3 +19,9 @@ export const login = async (user) => {
   const response = await axios.post(`${USERS_API}/login`, user);
   return response.data;
 };
+
+// delete user
+export const deleteUser = async (user) => {
+  const response = await axios.delete(`${USERS_API}/${user._id}`, user);
+  return response.data;
+};

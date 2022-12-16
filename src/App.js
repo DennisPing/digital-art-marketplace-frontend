@@ -17,8 +17,10 @@ import shopReducer from "./reducers/shop-reducer";
 import productReducer from "./reducers/product-reducer";
 import cartReducer from "./reducers/cart-reducer";
 import userReducer from "./reducers/user-reducer";
+import reviewReducer from "./reducers/review-reducer";
 import LoginComponent from "./login";
 import RegisterComponent from "./register";
+import DeleteComponent from "./profile/delete";
 
 const store = configureStore({
   reducer: {
@@ -27,6 +29,7 @@ const store = configureStore({
     product: productReducer,
     cart: cartReducer,
     user: userReducer,
+    review: reviewReducer
   },
 });
 
@@ -47,6 +50,7 @@ function App() {
             <Route path="checkout" element={<CheckoutComponent />} />
             <Route path="login" element={<LoginComponent />} />
             <Route path="register" element={<RegisterComponent />} />
+            <Route path="profile/delete" element={<DeleteComponent />} />
           </Routes>
 
           <div className="d-inline-flex">

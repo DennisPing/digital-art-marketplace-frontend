@@ -6,3 +6,5 @@ export const createUserThunk = createAsyncThunk("users/createUser", async (user)
 export const updateUserThunk = createAsyncThunk("users/updateUser", async (user) => await service.updateUser(user));
 
 export const loginThunk = createAsyncThunk("users/loginUser", async (user) => await service.login(user));
+
+export const deleteUserThunk = createAsyncThunk("users/deleteUser", async (user) => await service.deleteUser(user));

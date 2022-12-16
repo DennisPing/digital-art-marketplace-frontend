@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { createUserThunk, updateUserThunk, loginThunk } from "../services/users/user-thunks";
+import { createUserThunk, updateUserThunk, loginThunk, deleteUserThunk } from "../services/users/user-thunks";
 
 const initialState = {
   user: null,
@@ -39,6 +39,12 @@ const userSlice = createSlice({
     },
     [loginThunk.fulfilled]: (state, action) => {
       state.user = action.payload;
+    },
+    [deleteUserThunk.rejected]: (state) => {
+      state.loading = false;
+    },
+    [deleteUserThunk.fulfilled]: (state) => {
+      state.user = null;
     },
   },
   reducers: {
