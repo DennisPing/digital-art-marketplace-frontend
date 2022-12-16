@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
@@ -9,10 +8,8 @@ import "../index.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 // import ReactTooltip from "react-tooltip";
 
-const ProductInfo = ({ product }) => {
-  const { contractAddress, tokenId } = useParams();
+const ProductInfo = ({ product, contractAddress, tokenId, user }) => {
   const { transaction } = useSelector((state) => state.product);
-  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductTransactionThunk({ contractAddress, tokenId }));

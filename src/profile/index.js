@@ -118,7 +118,7 @@ const ProfileComponent = () => {
     setShowPassword(!showPassword);
   };
 
-  // Success message
+  // Update profile success message
   const [success, setSuccess] = useState(null);
 
   return (
@@ -127,21 +127,25 @@ const ProfileComponent = () => {
         <div className="d-flex justify-content-center align-items-center">
           <h1 className="fw-bold d-inline-block py-4">{`Hello ${Capitalize(user.firstName)}`}</h1>
           {user.userType === "premium" ? (
-            <i className="bx bx-lg bx-badge-check text-primary ms-2" data-tip data-for="premiumIcon" />
+            <>
+              <i className="bx bx-lg bx-badge-check text-primary ms-2" data-tip data-for="premiumIcon" />
+              <ReactTooltip id="premiumIcon" place="top">
+                Premium User
+              </ReactTooltip>
+            </>
           ) : (
             ""
           )}
           {user.userType === "admin" ? (
-            <i className="bx bx-lg bx-crown text-primary ms-2" data-tip data-for="adminIcon" />
+            <>
+              <i className="bx bx-lg bx-crown text-primary ms-2" data-tip data-for="adminIcon" />
+              <ReactTooltip id="adminIcon" place="top">
+                Admin User
+              </ReactTooltip>
+            </>
           ) : (
             ""
           )}
-          <ReactTooltip id="premiumIcon" place="top">
-            Premium User
-          </ReactTooltip>
-          <ReactTooltip id="adminIcon" place="top">
-            Admin User
-          </ReactTooltip>
         </div>
         <div className="list-group-item">
           {success === true && <AlertComponent success={success} message="Profile updated successfully" />}
@@ -238,7 +242,7 @@ const ProfileComponent = () => {
 
           <h1 className="fw-bold text-center pt-3 border-top">Premium Membership</h1>
           <h5 className="text-secondary text-center">Get exclusive access to VIP art collections</h5>
-          {subscribed === false || subscribed === null ? (
+          {user.userType === "free" ? (
             <div className="wd-register-btn py-4">
               <button className="btn btn-success btn-lg rounded-pill" onClick={subscribePremiumHandler}>
                 Subscribe to Premium
