@@ -2,3 +2,10 @@
   --bs-bg-opacity: 0.25;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
+
+.wd-search-left-round {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-color: red;
+  color: red;
+}
