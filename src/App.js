@@ -23,6 +23,7 @@ import RegisterComponent from "./register";
 import DeleteComponent from "./profile/delete";
 import ExploreSearchComponent from "./explore-search";
 import MyCollectionComponent from "./profile/mycollection";
+import AdminComponent from "./admin";
 
 const store = configureStore({
   reducer: {
@@ -55,6 +56,7 @@ function App() {
             <Route path="profile/delete" element={<DeleteComponent />} />
             <Route path="explore-search" element={<ExploreSearchComponent />} />
             <Route path="profile/mycollection" element={<MyCollectionComponent />} />
+            <Route path="admin" element={<AdminComponent />} />
           </Routes>
 
           {/* <div className="d-inline-flex">
