@@ -27,6 +27,12 @@ const NavbarComponent = () => {
     navigate("/explore-search", { state: { search } });
   };
 
+  const enterKeyHandler = (e) => {
+    if (e.key === "Enter") {
+      navigate("/explore-search", { state: { search } });
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid px-0 py-2">
@@ -48,7 +54,7 @@ const NavbarComponent = () => {
         </button>
 
         {/* Search bar */}
-        <div class="d-flex input-group">
+        <div className="d-flex input-group">
           <input
             type="text"
             className="form-control form-control-lg"
@@ -56,6 +62,7 @@ const NavbarComponent = () => {
             aria-label="Search collections"
             aria-describedby="button-addon"
             onChange={(e) => setSearch(e.target.value)}
+            onKeyUp={(e) => enterKeyHandler(e)}
           />
           <button className="btn btn-outline-primary" type="button" id="button-addon" onClick={searchHandler}>
             Search
